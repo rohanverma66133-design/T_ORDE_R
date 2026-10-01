@@ -1,0 +1,26 @@
+{
+  "name": "@tord/eslint-config",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./base": "./base.js",
+    "./next": "./next.js",
+    "./nestjs": "./nestjs.js"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.17.0",
+    "@next/eslint-plugin-next": "^15.1.3",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "typescript-eslint": "^8.18.2"
+  },
+  "scripts": {
+    "build": "node -e \"process.exit(0)\""
+  },
+  "peerDependencies": {
+    "eslint": "^9.0.0",
+    "typescript": "^5.0.0"
+  }
+}

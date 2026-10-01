@@ -1,0 +1,58 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: tord
+          POSTGRES_PASSWORD: tord
+          POSTGRES_DB: tord
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U tord -d tord"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://tord:tord@localhost:5432/tord?schema=public
+      REDIS_URL: redis://localhost:6379
+      JWT_ACCESS_SECRET: ci-access-secret-value-32chars
+      JWT_REFRESH_SECRET: ci-refresh-secret-value-32char
+      PAYMENT_WEBHOOK_SECRET: ci-payment-webhook-secret-value-32chars
+      NODE_ENV: test
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:3001/api/v1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @tord/api prisma:generate
+      - run: pnpm --filter @tord/api prisma:migrate:deploy
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm --filter @tord/api test:e2e

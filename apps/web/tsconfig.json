@@ -1,0 +1,22 @@
+{
+  "extends": "@tord/tsconfig/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "e2e",
+    "next-env.d.ts",
+    "playwright.config.ts",
+    "src",
+    "vitest.config.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

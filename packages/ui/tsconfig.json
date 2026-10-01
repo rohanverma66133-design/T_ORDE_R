@@ -1,0 +1,8 @@
+{
+  "extends": "@tord/tsconfig/react-library.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "rootDir": "."
+  },
+  "include": ["src", "vitest.setup.ts"]
+}

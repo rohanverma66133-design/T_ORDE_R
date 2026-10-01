@@ -1,0 +1,9 @@
+{
+  "watchOptions": {
+    "ignored": ["**/node_modules", "**/dist"]
+  },
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": false
+  }
+}

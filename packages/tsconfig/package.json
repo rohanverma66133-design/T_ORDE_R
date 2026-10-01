@@ -1,0 +1,14 @@
+{
+  "name": "@tord/tsconfig",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "node -e \"process.exit(0)\""
+  },
+  "files": [
+    "base.json",
+    "nestjs.json",
+    "nextjs.json",
+    "react-library.json"
+  ]
+}

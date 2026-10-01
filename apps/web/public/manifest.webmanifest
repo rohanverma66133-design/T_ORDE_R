@@ -1,0 +1,13 @@
+{
+  "name": "T-Ord Delivery",
+  "short_name": "T-Ord",
+  "description": "Town grocery and medicine delivery",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f1f3f2",
+  "theme_color": "#238c7c",
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

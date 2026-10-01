@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* PREMIUM FRESH GROCERY DESIGN SYSTEM TOKENS */
+  --color-primary: #15803D; /* Forest / Natural Green */
+  --color-primary-hover: #166534;
+  --color-primary-light: #F0FDF4;
+  --color-primary-accent: #22C55E;
+  
+  --color-dark-green: #0F3A22;
+  --color-soft-green: #DCFCE7;
+  
+  --color-background: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #F1F5F9;
+  
+  --color-charcoal: #0F172A;
+  --color-charcoal-muted: #334155;
+  --color-slate-subtle: #64748B;
+  --color-border: #E2E8F0;
+  --color-border-light: #F1F5F9;
+
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  padding-bottom: 4.5rem;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 0;
+  }
+}
+
+/* Custom Clean Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Utility for hiding scrollbar in horizontal carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ========================================================================= */
+/* PREMIUM FRESH GROCERY INTERACTION STYLES */
+/* ========================================================================= */
+
+.btn-primary-green {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #16A34A;
+  color: #FFFFFF;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.25);
+}
+.btn-primary-green:hover {
+  background-color: #15803D;
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.35);
+  transform: translateY(-1px);
+}
+.btn-primary-green:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-secondary-clean {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  color: #1E293B;
+  border: 1px solid #E2E8F0;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+.btn-secondary-clean:hover {
+  background-color: #F8FAFC;
+  border-color: #CBD5E1;
+  color: #0F172A;
+  transform: translateY(-1px);
+}
+.btn-secondary-clean:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Legacy Class Compatibility Aliases */
+.glass-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #16A34A;
+  color: #FFFFFF;
+  font-weight: 700;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 10px rgba(22, 163, 74, 0.25);
+}
+.glass-btn-primary:hover {
+  background-color: #15803D;
+  box-shadow: 0 4px 16px rgba(22, 163, 74, 0.35);
+  transform: translateY(-1px);
+}
+.glass-btn-primary:active {
+  transform: scale(0.98);
+}
+
+.glass-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  color: #1E293B;
+  border: 1px solid #E2E8F0;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-btn-secondary:hover {
+  background-color: #F8FAFC;
+  border-color: #CBD5E1;
+  color: #0F172A;
+}
+
+.glass-card-product {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card-product:hover {
+  border-color: #86EFAC;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  transform: translateY(-3px);
+}
+
+.glass-surface {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.glass-surface-subtle {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+}
+
+/* Badge & Indicator Animations */
+@keyframes bounceCart {
+  0%, 100% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.2) rotate(-4deg);
+  }
+  60% {
+    transform: scale(0.95) rotate(2deg);
+  }
+  80% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-bounce-cart {
+  animation: bounceCart 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+:focus-visible {
+  outline: 2px solid #16A34A;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

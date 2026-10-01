@@ -1,0 +1,18 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.ts$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "^@tord/validation$": "<rootDir>/../../../packages/validation/dist/index.cjs",
+    "^@tord/types$": "<rootDir>/../../../packages/types/dist/index.cjs",
+    "^@tord/config$": "<rootDir>/../../../packages/config/dist/index.cjs",
+    "^@prisma/client$": "<rootDir>/../../../node_modules/.pnpm/@prisma+client@6.19.3_prisma@6.19.3_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client/index.js",
+    "^\\.prisma/client/default$": "<rootDir>/../../../node_modules/.pnpm/@prisma+client@6.19.3_prisma@6.19.3_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client/index.js",
+    "^\\.prisma/client/(.*)$": "<rootDir>/../../../node_modules/.pnpm/@prisma+client@6.19.3_prisma@6.19.3_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client/$1",
+    "^#main-entry-point$": "<rootDir>/../../../node_modules/.pnpm/@prisma+client@6.19.3_prisma@6.19.3_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client/index.js"
+  }
+}

@@ -1,0 +1,51 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: tord-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: tord
+      POSTGRES_PASSWORD: tord
+      POSTGRES_DB: tord
+    ports:
+      - "5433:5432"
+    volumes:
+      - tord_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tord -d tord"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: tord-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - tord_redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  minio:
+    image: quay.io/minio/minio:RELEASE.2024-03-03T17-50-39Z
+    container_name: tord-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: tordminio
+      MINIO_ROOT_PASSWORD: tordminio123
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - tord_minio_data:/data
+
+volumes:
+  tord_pg_data:
+  tord_redis_data:
+  tord_minio_data:
