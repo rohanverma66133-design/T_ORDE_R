@@ -36,14 +36,30 @@ async function bootstrap(): Promise<void> {
     }),
   );
   app.setGlobalPrefix(prefix);
-  const webOrigin = config.get('WEB_ORIGIN', { infer: true });
+  const rawWebOrigin = config.get('WEB_ORIGIN', { infer: true }) || '';
+  const configuredOrigins = rawWebOrigin
+    .split(',')
+    .map((o) => o.trim().replace(/\/+$/, ''))
+    .filter(Boolean);
+
   app.enableCors({
     origin: (requestOrigin, callback) => {
       if (!requestOrigin || process.env.NODE_ENV !== 'production') {
         return callback(null, true);
       }
-      const allowedOrigins = [webOrigin, 'http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://localhost:3002'];
-      if (allowedOrigins.includes(requestOrigin) || /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(requestOrigin)) {
+      const allowedOrigins = [
+        ...configuredOrigins,
+        'http://localhost:3000',
+        'http://127.0.0.1:3000',
+        'http://localhost:3001',
+        'http://localhost:3002',
+      ];
+      if (
+        allowedOrigins.includes(requestOrigin) ||
+        /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(requestOrigin) ||
+        /^https:\/\/[\w-]+\.onrender\.com$/.test(requestOrigin) ||
+        /^https:\/\/[\w-]+\.vercel\.app$/.test(requestOrigin)
+      ) {
         return callback(null, true);
       }
       return callback(null, false);
