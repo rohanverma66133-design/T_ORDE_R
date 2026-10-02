@@ -5,7 +5,8 @@ dist
 coverage
 playwright-report
 test-results
-storage
+/storage
+!/apps/api/src/storage
 *.log
 *.tsbuildinfo
 .env
