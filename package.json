@@ -12,6 +12,8 @@
     "dev:web": "pnpm --filter @tord/web dev",
     "dev:api": "pnpm --filter @tord/api dev",
     "build": "turbo run build",
+    "build:web": "turbo run build --filter=@tord/web...",
+    "start:web": "pnpm --filter @tord/web start",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
