@@ -17,9 +17,22 @@ RUN pnpm --filter @tord/api build
 FROM node:22-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
-COPY --from=build /app/apps/api/dist ./dist
-COPY --from=build /app/apps/api/package.json ./package.json
+
+# Copy workspace manifest files (so pnpm/node can resolve workspace packages)
+COPY --from=build /app/package.json ./package.json
+COPY --from=build /app/pnpm-workspace.yaml ./pnpm-workspace.yaml
+
+# Copy root node_modules (contains the pnpm .pnpm store with all real packages)
 COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/apps/api/prisma ./prisma
+
+# Copy built workspace packages + their local node_modules (symlinks)
+COPY --from=build /app/packages ./packages
+# Copy apps/api (source not needed, but node_modules/ contains workspace symlinks)
+COPY --from=build /app/apps/api/package.json ./apps/api/package.json
+COPY --from=build /app/apps/api/node_modules ./apps/api/node_modules
+COPY --from=build /app/apps/api/dist ./apps/api/dist
+COPY --from=build /app/apps/api/prisma ./apps/api/prisma
+
 EXPOSE 3001
+WORKDIR /app/apps/api
 CMD ["node", "dist/main.js"]
