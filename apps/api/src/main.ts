@@ -4,6 +4,7 @@ import { Logger } from 'nestjs-pino';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import { json, raw, urlencoded } from 'express';
+import passport from 'passport';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
 import type { AppEnv } from './config/env';
@@ -15,6 +16,7 @@ async function bootstrap(): Promise<void> {
 
   app.useLogger(app.get(Logger));
   app.use(cookieParser());
+  app.use(passport.initialize());
   // The payment provider signs the exact bytes. This route must be registered before JSON parsing.
   app.use(`/payments/webhook`, raw({ type: 'application/json', limit: '1mb' }));
   app.use(json({ limit: '10mb' }));

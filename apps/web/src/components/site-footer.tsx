@@ -3,7 +3,7 @@ import { ShieldCheck, Phone, Mail, MapPin, CreditCard, Lock, Leaf, CheckCircle2,
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-emerald-950 bg-[#0A2616] text-slate-300 pt-16 pb-12 font-sans">
+    <footer className="border-t border-emerald-950 bg-[#0A2616] text-slate-300 pt-12 pb-24 md:pt-16 md:pb-12 font-sans">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* 5-Column Links Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-xs leading-relaxed">

@@ -64,17 +64,17 @@ export function QuickViewModal({ product, isOpen, onClose, onAddToCart }: QuickV
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/70 backdrop-blur-sm animate-fadeIn overflow-y-auto">
       {/* Backdrop listener */}
-      <div className="absolute inset-0 cursor-pointer" onClick={onClose} aria-hidden="true" />
+      <div className="fixed inset-0 cursor-pointer" onClick={onClose} aria-hidden="true" />
 
       {/* Modal Content */}
-      <div className="relative z-10 w-full max-w-2xl overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-2xl p-6 sm:p-8">
+      <div className="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-slate-200 shadow-2xl p-5 sm:p-8 my-auto">
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 h-9 w-9 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors cursor-pointer z-20"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors cursor-pointer z-20"
           aria-label="Close modal"
         >
           <X className="h-4 w-4" />

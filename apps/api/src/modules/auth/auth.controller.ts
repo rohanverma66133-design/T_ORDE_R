@@ -31,7 +31,12 @@ export class AuthController {
 
   @Public()
   @Get('google')
-  async googleAuth(@Req() req: Request, @Res() res: Response, @Next() next: NextFunction) {
+  async googleAuth(
+    @Req() req: Request,
+    @Res() res: Response,
+    @Next() next: NextFunction,
+    @Query('redirect') redirectQuery?: string,
+  ) {
     const clientId = this.config.get('GOOGLE_CLIENT_ID', { infer: true });
     const clientSecret = this.config.get('GOOGLE_CLIENT_SECRET', { infer: true });
     const frontendUrl = this.config.get('FRONTEND_URL', { infer: true }) || 'http://localhost:3002';
@@ -41,12 +46,19 @@ export class AuthController {
       return res.redirect(`${frontendUrl}/login?error=${encodeURIComponent(errorMsg)}`);
     }
 
-    return passport.authenticate('google', { scope: ['email', 'profile'] })(req, res, next);
+    const state = redirectQuery || '/';
+    return passport.authenticate('google', { scope: ['email', 'profile'], state })(req, res, next);
   }
 
   @Public()
   @Get('google/callback')
-  async googleAuthCallback(@Req() req: Request, @Res() res: Response, @Next() next: NextFunction, @Query('redirect') redirectQuery?: string) {
+  async googleAuthCallback(
+    @Req() req: Request,
+    @Res() res: Response,
+    @Next() next: NextFunction,
+    @Query('state') stateQuery?: string,
+    @Query('redirect') redirectQuery?: string,
+  ) {
     const frontendUrl = this.config.get('FRONTEND_URL', { infer: true }) || 'http://localhost:3002';
 
     return passport.authenticate('google', { session: false }, (err: any, googleRes: any) => {
@@ -56,7 +68,7 @@ export class AuthController {
       }
 
       this.setRefreshTokenCookie(res, googleRes.tokens.refreshToken);
-      const targetRedirect = redirectQuery || '/';
+      const targetRedirect = stateQuery || redirectQuery || '/';
 
       const redirectUrl = new URL(`${frontendUrl}/auth/callback`);
       redirectUrl.searchParams.set('accessToken', googleRes.tokens.accessToken);

@@ -533,6 +533,132 @@ export function CatalogView({ categorySlug }: CatalogViewProps) {
           </div>
         </main>
       </div>
+
+      {/* Mobile Filter Drawer */}
+      {isMobileFilterOpen && (
+        <div className="fixed inset-0 z-50 flex justify-end bg-slate-950/70 backdrop-blur-sm md:hidden animate-fadeIn">
+          <div className="fixed inset-0 cursor-pointer" onClick={() => setIsMobileFilterOpen(false)} aria-hidden="true" />
+          <div className="relative z-10 w-full max-w-xs h-full bg-white p-6 shadow-2xl overflow-y-auto flex flex-col justify-between text-slate-900 space-y-6">
+            <div className="space-y-6">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div className="flex items-center gap-2 font-black text-sm text-slate-900">
+                  <Filter className="h-4 w-4 text-emerald-600" />
+                  <span>Filter Products</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsMobileFilterOpen(false)}
+                  className="w-8 h-8 rounded-full flex items-center justify-center bg-slate-100 text-slate-600 font-bold"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+
+              {/* Categories Filter */}
+              <div className="space-y-2">
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Categories</label>
+                <div className="space-y-1">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedCategory('')}
+                    className={`w-full text-left px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+                      !selectedCategory
+                        ? 'bg-emerald-700 text-white shadow-xs'
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                    }`}
+                  >
+                    All Categories
+                  </button>
+                  {categories.map((cat) => (
+                    <button
+                      key={cat.id}
+                      type="button"
+                      onClick={() => setSelectedCategory(cat.slug)}
+                      className={`w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+                        selectedCategory === cat.slug
+                          ? 'bg-emerald-700 text-white shadow-xs'
+                          : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                      }`}
+                    >
+                      <span>{cat.name}</span>
+                      <span className="text-[10px] opacity-70">({cat.productCount})</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Price Range Filter */}
+              <div className="space-y-2 pt-4 border-t border-slate-100">
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Price Range (₹)</label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="number"
+                    placeholder="Min"
+                    value={minPrice}
+                    onChange={(e) => setMinPrice(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 font-medium"
+                  />
+                  <span className="text-xs text-slate-400 font-bold">-</span>
+                  <input
+                    type="number"
+                    placeholder="Max"
+                    value={maxPrice}
+                    onChange={(e) => setMaxPrice(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 font-medium"
+                  />
+                </div>
+              </div>
+
+              {/* Checkbox Options */}
+              <div className="space-y-2.5 pt-4 border-t border-slate-100 text-xs font-medium text-slate-700">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={inStockOnly}
+                    onChange={(e) => setInStockOnly(e.target.checked)}
+                    className="rounded border-slate-300 text-emerald-600 h-4 w-4"
+                  />
+                  <span className="font-bold">In Stock Only</span>
+                </label>
+
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={rxRequired}
+                    onChange={(e) => setRxRequired(e.target.checked)}
+                    className="rounded border-slate-300 text-rose-600 h-4 w-4"
+                  />
+                  <span className="flex items-center gap-1 text-rose-600 font-bold">
+                    <ShieldAlert className="h-3.5 w-3.5" />
+                    <span>Prescription (Rx)</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div className="space-y-2 pt-4 border-t border-slate-100">
+              <button
+                type="button"
+                onClick={() => setIsMobileFilterOpen(false)}
+                className="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3 rounded-xl text-xs transition-colors cursor-pointer"
+              >
+                Apply Filters
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  resetFilters();
+                  setIsMobileFilterOpen(false);
+                }}
+                className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 rounded-xl text-xs transition-colors cursor-pointer"
+              >
+                Reset All Filters
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <SiteFooter />
     </div>
   );
