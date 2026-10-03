@@ -102,22 +102,22 @@ export function SiteHeader() {
   return (
     <header suppressHydrationWarning className="w-full bg-[#061B12] text-white sticky top-0 z-40 border-b border-emerald-950/80 shadow-md">
       {/* 1. Top Mini Utility Ticker */}
-      <div suppressHydrationWarning className="bg-[#04140D] text-emerald-200/90 text-[11px] py-1.5 border-b border-emerald-950/60">
-        <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+      <div suppressHydrationWarning className="bg-[#04140D] text-emerald-200/90 text-[11px] py-1.5 border-b border-emerald-950/60 overflow-hidden">
+        <div className="max-w-[1240px] mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-3 sm:gap-4 overflow-hidden">
           {/* Store / Delivery Location */}
-          <div className="flex items-center gap-2">
-            <span className="flex h-2 w-2 relative">
+          <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 max-w-full">
+            <span className="flex h-2 w-2 relative shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#B4F83C] opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#B4F83C]"></span>
             </span>
-            <span className="font-medium text-emerald-300">Express Delivery:</span>
+            <span className="font-medium text-emerald-300 shrink-0">Express:</span>
             <button
               type="button"
               onClick={() => setIsLocationOpen(true)}
-              className="text-white hover:text-[#B4F83C] font-semibold underline underline-offset-2 flex items-center gap-1 cursor-pointer"
+              className="text-white hover:text-[#B4F83C] font-semibold underline underline-offset-2 flex items-center gap-1 cursor-pointer min-w-0"
             >
-              <span>{location || 'Town Center, Sector 4'}</span>
-              <ChevronDown className="h-3 w-3 text-emerald-400" />
+              <span className="truncate max-w-[140px] xs:max-w-[200px] sm:max-w-xs">{location || 'Town Center, Sector 4'}</span>
+              <ChevronDown className="h-3 w-3 text-emerald-400 shrink-0" />
             </button>
           </div>
 
@@ -235,24 +235,24 @@ export function SiteHeader() {
         </div>
 
         {/* RIGHT: User Profile & Cart Pill (Matching Reference) */}
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
           {/* Account Button */}
           {isAuthenticated ? (
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1">
               <Link href="/account">
                 <button
                   type="button"
-                  className="h-10 px-3.5 rounded-full bg-[#0C291D] hover:bg-emerald-900/80 border border-emerald-800/60 text-white text-xs font-semibold flex items-center gap-2 transition-colors cursor-pointer"
+                  className="h-9 sm:h-10 px-2.5 sm:px-3.5 rounded-full bg-[#0C291D] hover:bg-emerald-900/80 border border-emerald-800/60 text-white text-xs font-semibold flex items-center gap-1.5 sm:gap-2 transition-colors cursor-pointer"
                 >
-                  <User className="h-4 w-4 text-[#B4F83C]" />
-                  <span className="max-w-[80px] truncate">{user?.name || 'Account'}</span>
+                  <User className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#B4F83C]" />
+                  <span className="max-w-[60px] sm:max-w-[80px] truncate hidden xs:inline">{user?.name || 'Account'}</span>
                 </button>
               </Link>
               <button
                 type="button"
                 onClick={logout}
                 title="Logout"
-                className="h-10 w-10 rounded-full bg-[#0C291D] border border-emerald-800/60 text-emerald-300 hover:text-rose-400 hover:bg-rose-950/40 flex items-center justify-center transition-colors cursor-pointer"
+                className="hidden sm:flex h-10 w-10 rounded-full bg-[#0C291D] border border-emerald-800/60 text-emerald-300 hover:text-rose-400 hover:bg-rose-950/40 items-center justify-center transition-colors cursor-pointer"
               >
                 <LogOut className="h-4 w-4" />
               </button>
@@ -261,7 +261,7 @@ export function SiteHeader() {
             <Link href="/login">
               <button
                 type="button"
-                className="h-10 w-10 rounded-full bg-[#0C291D] hover:bg-emerald-900/80 border border-emerald-800/60 text-emerald-200 hover:text-white flex items-center justify-center transition-colors shadow-xs cursor-pointer"
+                className="h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-[#0C291D] hover:bg-emerald-900/80 border border-emerald-800/60 text-emerald-200 hover:text-white flex items-center justify-center transition-colors shadow-xs cursor-pointer"
                 title="Sign In"
               >
                 <User className="h-4 w-4" />
@@ -273,14 +273,14 @@ export function SiteHeader() {
           <Link href="/cart">
             <button
               type="button"
-              className={`flex items-center gap-2.5 h-10 px-4 rounded-full border transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 sm:gap-2.5 h-9 sm:h-10 px-2.5 sm:px-4 rounded-full border transition-all cursor-pointer ${
                 cartBounced
                   ? 'bg-[#B4F83C] text-[#061B12] border-[#B4F83C] shadow-[0_0_25px_rgba(180,248,60,0.5)] animate-bounce-cart'
                   : 'bg-[#0C291D] hover:bg-emerald-900/90 text-white border-emerald-800/70 hover:border-emerald-600'
               }`}
             >
               <div className="relative flex items-center">
-                <ShoppingCart className={`h-4 w-4 ${cartBounced ? 'text-[#061B12]' : 'text-emerald-300'}`} />
+                <ShoppingCart className={`h-3.5 w-3.5 sm:h-4 sm:w-4 ${cartBounced ? 'text-[#061B12]' : 'text-emerald-300'}`} />
                 {cartItemCount > 0 && (
                   <span className="absolute -top-1.5 -right-1.5 flex h-2.5 w-2.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#B4F83C] opacity-75"></span>
@@ -288,8 +288,8 @@ export function SiteHeader() {
                   </span>
                 )}
               </div>
-              <span className={`text-xs font-bold font-mono ${cartBounced ? 'text-[#061B12]' : 'text-white'}`}>
-                {cartTotal > 0 ? `₹${cartTotal.toFixed(2)}` : `${cartItemCount} items`}
+              <span className={`text-[11px] sm:text-xs font-bold font-mono ${cartBounced ? 'text-[#061B12]' : 'text-white'}`}>
+                {cartTotal > 0 ? `₹${cartTotal.toFixed(0)}` : `${cartItemCount}`}
               </span>
             </button>
           </Link>
@@ -298,10 +298,10 @@ export function SiteHeader() {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden h-10 w-10 flex items-center justify-center rounded-full bg-[#0C291D] border border-emerald-800/60 text-white hover:bg-emerald-900 cursor-pointer"
+            className="md:hidden h-9 w-9 sm:h-10 sm:w-10 flex items-center justify-center rounded-full bg-[#0C291D] border border-emerald-800/60 text-white hover:bg-emerald-900 cursor-pointer"
             aria-label="Toggle mobile menu"
           >
-            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isMobileMenuOpen ? <X className="h-4 w-4 sm:h-5 sm:w-5" /> : <Menu className="h-4 w-4 sm:h-5 sm:w-5" />}
           </button>
         </div>
       </div>

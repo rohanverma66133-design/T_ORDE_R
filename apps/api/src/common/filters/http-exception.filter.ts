@@ -59,6 +59,8 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       details = exception.flatten();
     } else if (exception instanceof Error) {
       this.logger.error(exception.message, exception.stack);
+      message = exception.message || 'An unexpected error occurred';
+      details = exception.message;
     } else {
       this.logger.error('Unknown exception', String(exception));
     }

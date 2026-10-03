@@ -28,11 +28,14 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: '#15803D',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="overflow-x-hidden max-w-full">
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -55,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body
         suppressHydrationWarning
-        className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-[#F8FAFC] text-slate-900 min-h-screen selection:bg-emerald-100 selection:text-emerald-900`}
+        className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-[#F8FAFC] text-slate-900 min-h-screen selection:bg-emerald-100 selection:text-emerald-900 overflow-x-hidden max-w-full w-full`}
       >
         <QueryProvider>
           <AuthProvider>

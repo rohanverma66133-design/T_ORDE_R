@@ -42,12 +42,17 @@ export class AuthController {
     const frontendUrl = this.config.get('FRONTEND_URL', { infer: true }) || 'http://localhost:3002';
 
     if (!clientId || !clientSecret || clientId.trim().length === 0 || clientId === 'placeholder_client_id') {
-      const errorMsg = 'Google OAuth credentials (GOOGLE_CLIENT_ID & GOOGLE_CLIENT_SECRET) are not configured in apps/api/.env';
+      const errorMsg = 'Google OAuth credentials (GOOGLE_CLIENT_ID & GOOGLE_CLIENT_SECRET) are not configured in Render environment variables.';
       return res.redirect(`${frontendUrl}/login?error=${encodeURIComponent(errorMsg)}`);
     }
 
-    const state = redirectQuery || '/';
-    return passport.authenticate('google', { scope: ['email', 'profile'], state })(req, res, next);
+    try {
+      const state = redirectQuery || '/';
+      return passport.authenticate('google', { scope: ['email', 'profile'], state })(req, res, next);
+    } catch (err: any) {
+      const errorMsg = err?.message || 'Failed to initiate Google sign in';
+      return res.redirect(`${frontendUrl}/login?error=${encodeURIComponent(errorMsg)}`);
+    }
   }
 
   @Public()
