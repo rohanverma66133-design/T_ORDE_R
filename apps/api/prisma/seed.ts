@@ -366,6 +366,18 @@ async function main(): Promise<void> {
   const categoryTree: CategoryDef[] = [
     // Grocery Taxonomy
     {
+      name: 'Fruits & Vegetables',
+      slug: 'fruits-vegetables',
+      description: 'Farm fresh organic fruits, leafy greens, root vegetables, hydroponic herbs, and exotic produce',
+      isMedicine: false,
+      displayOrder: 0,
+      subcategories: [
+        { name: 'Fresh Vegetables', slug: 'fresh-vegetables', description: 'Broccoli, cherry tomatoes, spinach, carrots, and potatoes' },
+        { name: 'Fresh Fruits', slug: 'fresh-fruits', description: 'Apples, avocados, mangoes, bananas, and citrus' },
+        { name: 'Organic & Hydroponic', slug: 'organic-hydroponic', description: 'Certified pesticide-free organic greens and hydroponics' },
+      ],
+    },
+    {
       name: 'Staples & Grains',
       slug: 'staples-grains',
       description: 'Chakki fresh atta, premium basmati rice, lentils, cooking oils, and traditional spices',
@@ -514,42 +526,61 @@ async function main(): Promise<void> {
 
   console.log('🛒 Seeding Grocery Catalog Products...');
   const groceryItemsSeedData = [
-    // Atta & Flour
-    { brand: 'Aashirvaad', name: 'Superior MP Whole Wheat Atta 5kg', mrp: 275, price: 245, unit: '5 kg', cat: 'atta-flour', featured: true, img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop' },
+    // --- Fresh Fruits & Vegetables ---
+    { brand: 'TORD Organic Farm', name: 'Fresh Farm Broccoli Crowns 500g', mrp: 85, price: 68, unit: '500 g', cat: 'fresh-vegetables', featured: true, img: 'https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=600&auto=format&fit=crop' },
+    { brand: 'GreenHouse Pure', name: 'Hydroponic Sweet Cherry Tomatoes 250g', mrp: 70, price: 55, unit: '250 g', cat: 'fresh-vegetables', featured: true, img: 'https://images.unsplash.com/photo-1546470427-e26264be0b11?w=600&auto=format&fit=crop' },
+    { brand: 'Himachal Orchards', name: 'Royal Shimla Crisp Red Apples 1kg', mrp: 220, price: 180, unit: '1 kg', cat: 'fresh-fruits', featured: true, img: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=600&auto=format&fit=crop' },
+    { brand: 'TORD Organics', name: 'Fresh Organic Hass Avocados 2-Pack', mrp: 250, price: 199, unit: '2 Pcs', cat: 'fresh-fruits', featured: true, img: 'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=600&auto=format&fit=crop' },
+    { brand: 'NatureFresh Farm', name: 'Crunchy Sweet Baby Carrots 500g', mrp: 60, price: 45, unit: '500 g', cat: 'fresh-vegetables', featured: false, img: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=600&auto=format&fit=crop' },
+    { brand: 'GreenFields', name: 'Farm Fresh Baby Spinach Leaves 250g', mrp: 45, price: 35, unit: '250 g', cat: 'fresh-vegetables', featured: false, img: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=600&auto=format&fit=crop' },
+    { brand: 'Konkan Direct', name: 'Ratnagiri Alphonso Mango 1 Dozen', mrp: 750, price: 599, unit: '1 Dozen', cat: 'fresh-fruits', featured: true, img: 'https://images.unsplash.com/photo-1553279768-865429fa0078?w=600&auto=format&fit=crop' },
+    { brand: 'RootHarvest', name: 'Farm Fresh Yellow Baby Potatoes 1kg', mrp: 55, price: 42, unit: '1 kg', cat: 'fresh-vegetables', featured: false, img: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop' },
+
+    // --- Dairy & Bakery ---
+    { brand: 'Vedic Pastures', name: 'Pure A2 Desi Cow Milk 1L Bottle', mrp: 95, price: 74, unit: '1 L', cat: 'milk-dairy', featured: true, img: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop' },
+    { brand: 'DairyCraft', name: 'Artisanal Fresh Farm Malai Paneer 200g', mrp: 115, price: 95, unit: '200 g', cat: 'milk-dairy', featured: true, img: 'https://images.unsplash.com/photo-1589927986076-a58133819602?w=600&auto=format&fit=crop' },
+    { brand: 'Amul Gold', name: 'Organic Country Salted Butter 500g', mrp: 295, price: 265, unit: '500 g', cat: 'milk-dairy', featured: true, img: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop' },
+    { brand: 'HappyHens', name: 'Free Range Farm Brown Eggs 12-Pack', mrp: 135, price: 110, unit: '12 Eggs', cat: 'milk-dairy', featured: true, img: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=600&auto=format&fit=crop' },
+    { brand: 'Town Bakehouse', name: 'Artisanal 100% Sourdough Loaf 400g', mrp: 110, price: 89, unit: '400 g', cat: 'bread-bakery', featured: true, img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop' },
+    { brand: 'HarvestGold', name: '100% Whole Wheat Sandwich Bread 400g', mrp: 60, price: 50, unit: '400 g', cat: 'bread-bakery', featured: false, img: 'https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=600&auto=format&fit=crop' },
+
+    // --- Atta & Flour ---
+    { brand: 'Aashirvaad', name: 'Superior MP Whole Wheat Atta 5kg', mrp: 275, price: 245, unit: '5 kg', cat: 'atta-flour', featured: true, img: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop' },
     { brand: 'Fortune', name: 'Chakki Fresh Atta 5kg', mrp: 260, price: 229, unit: '5 kg', cat: 'atta-flour', featured: false, img: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop' },
     { brand: 'Pillsbury', name: 'Chakki Fresh Whole Wheat Atta 5kg', mrp: 265, price: 235, unit: '5 kg', cat: 'atta-flour', featured: false, img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop' },
     { brand: 'Rajdhani', name: 'Sooji Semolina Granulated 500g', mrp: 38, price: 32, unit: '500 g', cat: 'atta-flour', featured: false, img: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop' },
     { brand: 'Tata Sampann', name: 'Fine Unpolished Besan Gram Flour 500g', mrp: 75, price: 64, unit: '500 g', cat: 'atta-flour', featured: true, img: 'https://images.unsplash.com/photo-1515543904379-3d757afe72e3?w=600&auto=format&fit=crop' },
 
-    // Rice & Grains
+    // --- Rice & Grains ---
     { brand: 'Daawat', name: 'Rozana Super Basmati Rice 5kg', mrp: 485, price: 399, unit: '5 kg', cat: 'rice-grains', featured: true, img: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop' },
     { brand: 'India Gate', name: 'Feast Rozana Basmati Rice 5kg', mrp: 520, price: 449, unit: '5 kg', cat: 'rice-grains', featured: true, img: 'https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&auto=format&fit=crop' },
     { brand: 'Fortune', name: 'Everyday Basmati Rice 1kg', mrp: 110, price: 88, unit: '1 kg', cat: 'rice-grains', featured: false, img: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop' },
 
-    // Pulses & Dals
+    // --- Pulses & Dals ---
     { brand: 'Tata Sampann', name: 'Unpolished Toor Dal 1kg', mrp: 185, price: 159, unit: '1 kg', cat: 'pulses-dals', featured: true, img: 'https://images.unsplash.com/photo-1515543904379-3d757afe72e3?w=600&auto=format&fit=crop' },
     { brand: 'Tata Sampann', name: 'Unpolished Moong Dal Split 500g', mrp: 95, price: 79, unit: '500 g', cat: 'pulses-dals', featured: false, img: 'https://images.unsplash.com/photo-1515543904379-3d757afe72e3?w=600&auto=format&fit=crop' },
 
-    // Edible Oils & Ghee
+    // --- Edible Oils & Ghee ---
+    { brand: 'OliveGold', name: 'Cold Pressed Extra Virgin Olive Oil 500ml', mrp: 550, price: 450, unit: '500 ml', cat: 'edible-oils-ghee', featured: true, img: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop' },
     { brand: 'Fortune', name: 'Sunlite Refined Sunflower Oil 1L', mrp: 155, price: 132, unit: '1 L', cat: 'edible-oils-ghee', featured: true, img: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop' },
     { brand: 'Fortune', name: 'Kachi Ghani Pure Mustard Oil 1L', mrp: 175, price: 149, unit: '1 L', cat: 'edible-oils-ghee', featured: true, img: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=600&auto=format&fit=crop' },
     { brand: 'Amul', name: 'Pure Cow Desi Ghee 1L Tin', mrp: 650, price: 595, unit: '1 L', cat: 'edible-oils-ghee', featured: true, img: 'https://images.unsplash.com/photo-1589927986076-a58133819602?w=600&auto=format&fit=crop' },
 
-    // Spices & Masalas
+    // --- Spices & Masalas ---
     { brand: 'Everest', name: 'Turmeric Powder (Haldi) 200g', mrp: 62, price: 52, unit: '200 g', cat: 'spices-masalas', featured: true, img: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop' },
     { brand: 'MDH', name: 'Tikhalal Red Chilli Powder 100g', mrp: 54, price: 46, unit: '100 g', cat: 'spices-masalas', featured: false, img: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop' },
 
-    // Biscuits & Namkeen
+    // --- Biscuits, Dry Fruits & Snacks ---
+    { brand: 'NutriDelight', name: 'Whole Jumbo California Almonds 500g', mrp: 580, price: 460, unit: '500 g', cat: 'dry-fruits-nuts', featured: true, img: 'https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=600&auto=format&fit=crop' },
     { brand: 'Parle', name: 'Parle-G Gold Glucose Biscuits 1kg Pack', mrp: 140, price: 120, unit: '1 kg', cat: 'biscuits-cookies', featured: true, img: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop' },
     { brand: "Haldiram's", name: 'Bikaneri Bhujia Crisp Sev 400g', mrp: 135, price: 115, unit: '400 g', cat: 'namkeen-chips', featured: true, img: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281288?w=600&auto=format&fit=crop' },
     { brand: "Lay's", name: "India's Magic Masala Potato Chips 50g", mrp: 20, price: 18, unit: '50 g', cat: 'namkeen-chips', featured: true, img: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281288?w=600&auto=format&fit=crop' },
 
-    // Dairy & Beverages
-    { brand: 'Amul', name: 'Taaza Homogenised Toned Milk 1L', mrp: 74, price: 70, unit: '1 L', cat: 'milk-dairy', featured: true, img: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop' },
+    // --- Beverages ---
     { brand: 'Tata Tea', name: 'Gold Premium Assam Tea 500g', mrp: 345, price: 289, unit: '500 g', cat: 'tea-coffee', featured: true, img: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&auto=format&fit=crop' },
     { brand: 'Tropicana', name: '100% Real Orange Juice 1L', mrp: 160, price: 135, unit: '1 L', cat: 'juices-soft-drinks', featured: true, img: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?w=600&auto=format&fit=crop' },
 
-    // Cleaning & Personal Care
+    // --- Personal Care & Cleaners ---
     { brand: 'Surf Excel', name: 'Easy Wash Detergent Powder 1kg', mrp: 150, price: 132, unit: '1 kg', cat: 'laundry-dishwashing', featured: true, img: 'https://images.unsplash.com/photo-1585421514284-efb74c2b69ba?w=600&auto=format&fit=crop' },
     { brand: 'Colgate', name: 'Total Whole Mouth Health Toothpaste 150g', mrp: 145, price: 122, unit: '150 g', cat: 'dental-oral-care', featured: true, img: 'https://images.unsplash.com/photo-1559598467-f8b76c8155d0?w=600&auto=format&fit=crop' },
   ];

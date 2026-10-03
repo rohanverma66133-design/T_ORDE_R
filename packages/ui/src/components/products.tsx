@@ -13,28 +13,16 @@ export interface PriceDisplayProps {
 }
 
 export function PriceDisplay({ price, compareAtPrice, currency = '₹', className }: PriceDisplayProps) {
-  const discountPercent =
-    compareAtPrice && compareAtPrice > price
-      ? Math.round(((compareAtPrice - price) / compareAtPrice) * 100)
-      : null;
-
   return (
-    <div suppressHydrationWarning className={cn('flex items-baseline gap-1.5 flex-wrap', className)}>
-      <span className="text-base sm:text-lg font-bold text-emerald-700 tracking-tight">
-        {currency}
-        {price.toFixed(2)}
+    <div suppressHydrationWarning className={cn('flex items-baseline gap-1 flex-wrap', className)}>
+      <span className="text-sm sm:text-base lg:text-lg font-black text-emerald-800 tracking-tight leading-none whitespace-nowrap">
+        {currency}{price % 1 === 0 ? price : price.toFixed(2)}
       </span>
       {compareAtPrice && compareAtPrice > price && (
-        <span className="text-xs text-slate-400 line-through font-normal">
-          {currency}
-          {compareAtPrice.toFixed(2)}
+        <span className="text-[10px] sm:text-xs text-slate-400 line-through font-medium leading-none whitespace-nowrap">
+          {currency}{compareAtPrice % 1 === 0 ? compareAtPrice : compareAtPrice.toFixed(2)}
         </span>
       )}
-      {discountPercent ? (
-        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-md">
-          {discountPercent}% OFF
-        </span>
-      ) : null}
     </div>
   );
 }
@@ -134,19 +122,19 @@ export function ProductCard({
   return (
     <div
       suppressHydrationWarning
-      className="group relative flex flex-col justify-between h-full rounded-2xl border border-slate-200/90 bg-white p-2.5 sm:p-3.5 lg:p-4 shadow-xs hover:shadow-md hover:border-emerald-300 transition-all duration-200"
+      className="group relative flex flex-col justify-between h-full rounded-2xl border border-slate-200/90 bg-white p-2.5 sm:p-3.5 lg:p-4 shadow-xs hover:shadow-md hover:border-emerald-300 transition-all duration-200 overflow-hidden"
     >
       {/* Top Badges & Floating Wishlist Icon */}
       <div className="absolute top-2 left-2 right-2 sm:top-2.5 sm:left-2.5 sm:right-2.5 z-10 flex items-center justify-between pointer-events-none">
-        <div className="flex items-center gap-1 sm:gap-1.5 flex-wrap max-w-[80%]">
+        <div className="flex items-center gap-1 sm:gap-1.5 flex-wrap max-w-[75%]">
           {discountPercent ? (
-            <span className="rounded-md bg-emerald-600 px-1.5 py-0.5 text-[9px] sm:text-[10px] font-bold text-white shadow-xs">
+            <span className="rounded-md bg-emerald-700 px-1.5 py-0.5 text-[9px] sm:text-[10px] font-bold text-white shadow-xs leading-tight">
               {discountPercent}% OFF
             </span>
           ) : null}
 
           {isPrescriptionRequired && (
-            <span className="rounded-md bg-rose-600 px-1.5 py-0.5 text-[9px] sm:text-[10px] font-bold text-white shadow-xs">
+            <span className="rounded-md bg-rose-600 px-1.5 py-0.5 text-[9px] sm:text-[10px] font-bold text-white shadow-xs leading-tight">
               Rx
             </span>
           )}
@@ -168,7 +156,7 @@ export function ProductCard({
 
       <div suppressHydrationWarning className="flex flex-col">
         {/* Product Image Container */}
-        <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-2.5 sm:mb-3 group-hover:bg-slate-100/60 transition-colors p-1.5 sm:p-2">
+        <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-2 sm:mb-3 group-hover:bg-slate-100/60 transition-colors p-1.5 sm:p-2">
           {imageUrl ? (
             <img src={imageUrl} alt={name} className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy" />
           ) : (
@@ -196,7 +184,7 @@ export function ProductCard({
 
         {/* Category & Star Rating */}
         <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-medium text-slate-500 mb-1 gap-1">
-          <span className="uppercase tracking-wider text-emerald-700 font-bold text-[9px] sm:text-[10px] truncate max-w-[100px] sm:max-w-[120px]">
+          <span className="uppercase tracking-wider text-emerald-700 font-bold text-[9px] sm:text-[10px] truncate max-w-[90px] sm:max-w-[120px]">
             {categoryName || (isMedicine ? 'Health' : 'Produce')}
           </span>
           <div className="flex items-center gap-0.5 text-amber-500 font-semibold text-[9px] sm:text-[10px] shrink-0">
@@ -213,21 +201,32 @@ export function ProductCard({
 
         {/* Unit & Brand */}
         <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-slate-500 mt-1 gap-1">
-          <span className="truncate max-w-[75px] sm:max-w-[100px]">{brand || ''}</span>
+          <span className="truncate max-w-[70px] sm:max-w-[100px]">{brand || ''}</span>
           <span className="font-medium text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded text-[9px] sm:text-[10px] truncate shrink-0">{unit}</span>
         </div>
       </div>
 
       {/* Footer Price & Add Button */}
-      <div className="mt-2.5 sm:mt-3 pt-2 sm:pt-2.5 border-t border-slate-100 flex items-center justify-between gap-1 sm:gap-2 flex-wrap" suppressHydrationWarning>
-        <PriceDisplay price={price} compareAtPrice={compareAtPrice} className="shrink-0" />
+      <div className="mt-2 sm:mt-3 pt-2 sm:pt-2.5 border-t border-slate-100 flex items-center justify-between gap-1.5 min-w-0" suppressHydrationWarning>
+        <div className="min-w-0 flex-1 flex flex-col justify-center">
+          <div className="flex items-baseline gap-1 flex-wrap">
+            <span className="text-sm sm:text-base lg:text-lg font-black text-emerald-800 tracking-tight leading-none whitespace-nowrap">
+              ₹{price % 1 === 0 ? price : price.toFixed(2)}
+            </span>
+            {compareAtPrice && compareAtPrice > price && (
+              <span className="text-[10px] sm:text-xs text-slate-400 line-through font-medium leading-none whitespace-nowrap">
+                ₹{compareAtPrice % 1 === 0 ? compareAtPrice : compareAtPrice.toFixed(2)}
+              </span>
+            )}
+          </div>
+        </div>
 
         <Button
           size="sm"
           disabled={!inStock}
           onClick={handleAdd}
           className={cn(
-            'rounded-lg px-2 sm:px-3 py-1 sm:py-1.5 text-[11px] sm:text-xs font-bold transition-all duration-200 cursor-pointer shrink-0 min-h-[30px] sm:min-h-[34px]',
+            'rounded-lg px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-bold transition-all duration-200 cursor-pointer shrink-0 min-h-[28px] sm:min-h-[32px] h-7 sm:h-8',
             isAdded
               ? 'bg-emerald-700 text-white shadow-xs'
               : inStock
@@ -238,15 +237,15 @@ export function ProductCard({
           {isAdded ? (
             <div className="flex items-center gap-1">
               <Check className="h-3 w-3 text-white stroke-[3]" />
-              <span className="hidden xs:inline">Added</span>
+              <span className="text-[10px] sm:text-xs">Added</span>
             </div>
           ) : inStock ? (
             <div className="flex items-center gap-1">
-              <span>Add</span>
+              <span className="text-[10px] sm:text-xs">Add</span>
               <Plus className="h-3 w-3 stroke-[2.5]" />
             </div>
           ) : (
-            'Sold Out'
+            <span className="text-[10px]">Sold Out</span>
           )}
         </Button>
       </div>

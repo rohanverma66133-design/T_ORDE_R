@@ -196,8 +196,9 @@ export default function HomePage() {
     }
   };
 
-  // Curated fallback product list for instant high-quality rendering
+  // Curated fallback product list with 28+ authentic high-quality grocery products
   const defaultGroceryProducts = [
+    // --- Fresh Fruits & Vegetables ---
     {
       id: 'g-1',
       name: 'Fresh Farm Broccoli Crowns',
@@ -215,21 +216,6 @@ export default function HomePage() {
     },
     {
       id: 'g-2',
-      name: 'Pure A2 Cow Milk (Glass Bottle)',
-      brand: 'Vedic Pastures',
-      unit: '1 Litre',
-      price: 74.0,
-      compareAtPrice: 95.0,
-      imageUrl: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop',
-      category: { name: 'Dairy & Eggs' },
-      isPrescriptionRequired: false,
-      isMedicine: false,
-      inStock: true,
-      rating: 4.8,
-      ratingCount: 142,
-    },
-    {
-      id: 'g-3',
       name: 'Hydroponic Sweet Cherry Tomatoes',
       brand: 'GreenHouse Pure',
       unit: '250g Box',
@@ -244,22 +230,7 @@ export default function HomePage() {
       ratingCount: 65,
     },
     {
-      id: 'g-4',
-      name: 'Artisanal 100% Sourdough Loaf',
-      brand: 'Town Bakehouse',
-      unit: '400g Loaf',
-      price: 89.0,
-      compareAtPrice: 110.0,
-      imageUrl: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop',
-      category: { name: 'Bakery & Bread' },
-      isPrescriptionRequired: false,
-      isMedicine: false,
-      inStock: true,
-      rating: 4.7,
-      ratingCount: 52,
-    },
-    {
-      id: 'g-5',
+      id: 'g-3',
       name: 'Royal Shimla Crisp Red Apples',
       brand: 'Himachal Orchards',
       unit: '1 kg Box (4-5 pcs)',
@@ -274,7 +245,221 @@ export default function HomePage() {
       ratingCount: 118,
     },
     {
+      id: 'g-4',
+      name: 'Fresh Organic Hass Avocados',
+      brand: 'TORD Organics',
+      unit: '2 Pcs (Pack)',
+      price: 199.0,
+      compareAtPrice: 250.0,
+      imageUrl: 'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=600&auto=format&fit=crop',
+      category: { name: 'Fruits & Vegetables' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.9,
+      ratingCount: 92,
+    },
+    {
+      id: 'g-5',
+      name: 'Crunchy Sweet Baby Carrots',
+      brand: 'NatureFresh Farm',
+      unit: '500g Pack',
+      price: 45.0,
+      compareAtPrice: 60.0,
+      imageUrl: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=600&auto=format&fit=crop',
+      category: { name: 'Fruits & Vegetables' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.7,
+      ratingCount: 48,
+    },
+    {
       id: 'g-6',
+      name: 'Farm Fresh Baby Spinach Leaves',
+      brand: 'GreenFields',
+      unit: '250g Box',
+      price: 35.0,
+      compareAtPrice: 45.0,
+      imageUrl: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=600&auto=format&fit=crop',
+      category: { name: 'Fruits & Vegetables' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.8,
+      ratingCount: 76,
+    },
+    {
+      id: 'g-7',
+      name: 'Ratnagiri Alphonso Mango Box',
+      brand: 'Konkan Direct',
+      unit: '1 Dozen Box',
+      price: 599.0,
+      compareAtPrice: 750.0,
+      imageUrl: 'https://images.unsplash.com/photo-1553279768-865429fa0078?w=600&auto=format&fit=crop',
+      category: { name: 'Fruits & Vegetables' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 5.0,
+      ratingCount: 230,
+    },
+    {
+      id: 'g-8',
+      name: 'Farm Fresh Yellow Baby Potatoes',
+      brand: 'RootHarvest',
+      unit: '1 kg Pack',
+      price: 42.0,
+      compareAtPrice: 55.0,
+      imageUrl: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop',
+      category: { name: 'Fruits & Vegetables' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.7,
+      ratingCount: 54,
+    },
+
+    // --- Dairy, Eggs & Bakery ---
+    {
+      id: 'g-9',
+      name: 'Pure A2 Desi Cow Milk (Glass Bottle)',
+      brand: 'Vedic Pastures',
+      unit: '1 Litre',
+      price: 74.0,
+      compareAtPrice: 95.0,
+      imageUrl: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop',
+      category: { name: 'Dairy & Eggs' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.9,
+      ratingCount: 142,
+    },
+    {
+      id: 'g-10',
+      name: 'Artisanal Fresh Farm Malai Paneer',
+      brand: 'DairyCraft',
+      unit: '200g Block',
+      price: 95.0,
+      compareAtPrice: 115.0,
+      imageUrl: 'https://images.unsplash.com/photo-1589927986076-a58133819602?w=600&auto=format&fit=crop',
+      category: { name: 'Dairy & Eggs' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.8,
+      ratingCount: 88,
+    },
+    {
+      id: 'g-11',
+      name: 'Organic Country Salted Butter',
+      brand: 'Amul Gold',
+      unit: '500g Block',
+      price: 265.0,
+      compareAtPrice: 295.0,
+      imageUrl: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop',
+      category: { name: 'Dairy & Eggs' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.8,
+      ratingCount: 110,
+    },
+    {
+      id: 'g-12',
+      name: 'Free Range Farm Brown Eggs (Pack of 12)',
+      brand: 'HappyHens',
+      unit: '12 Eggs Box',
+      price: 110.0,
+      compareAtPrice: 135.0,
+      imageUrl: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=600&auto=format&fit=crop',
+      category: { name: 'Dairy & Eggs' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.9,
+      ratingCount: 165,
+    },
+    {
+      id: 'g-13',
+      name: 'Artisanal 100% Sourdough Loaf',
+      brand: 'Town Bakehouse',
+      unit: '400g Loaf',
+      price: 89.0,
+      compareAtPrice: 110.0,
+      imageUrl: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop',
+      category: { name: 'Bakery & Bread' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.7,
+      ratingCount: 52,
+    },
+    {
+      id: 'g-14',
+      name: '100% Whole Wheat Sandwich Bread',
+      brand: 'HarvestGold',
+      unit: '400g Pack',
+      price: 50.0,
+      compareAtPrice: 60.0,
+      imageUrl: 'https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=600&auto=format&fit=crop',
+      category: { name: 'Bakery & Bread' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.6,
+      ratingCount: 70,
+    },
+
+    // --- Staples, Rice, Dals & Oils ---
+    {
+      id: 'g-15',
+      name: 'Daawat Rozana Super Basmati Rice',
+      brand: 'Daawat',
+      unit: '5 kg Bag',
+      price: 399.0,
+      compareAtPrice: 485.0,
+      imageUrl: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop',
+      category: { name: 'Organic Staples' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.9,
+      ratingCount: 195,
+    },
+    {
+      id: 'g-16',
+      name: 'Aashirvaad Superior MP Sharbati Atta',
+      brand: 'Aashirvaad',
+      unit: '5 kg Bag',
+      price: 245.0,
+      compareAtPrice: 275.0,
+      imageUrl: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop',
+      category: { name: 'Organic Staples' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.8,
+      ratingCount: 220,
+    },
+    {
+      id: 'g-17',
+      name: 'Tata Sampann Unpolished Toor Dal',
+      brand: 'Tata Sampann',
+      unit: '1 kg Bag',
+      price: 159.0,
+      compareAtPrice: 185.0,
+      imageUrl: 'https://images.unsplash.com/photo-1515543904379-3d757afe72e3?w=600&auto=format&fit=crop',
+      category: { name: 'Organic Staples' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.8,
+      ratingCount: 135,
+    },
+    {
+      id: 'g-18',
       name: 'Cold Pressed Extra Virgin Olive Oil',
       brand: 'OliveGold Organics',
       unit: '500 ml Bottle',
@@ -289,43 +474,167 @@ export default function HomePage() {
       ratingCount: 96,
     },
     {
-      id: 'g-7',
-      name: 'Organic Unpolished Toor Dal',
-      brand: 'NatureFresh Grains',
-      unit: '1 kg Bag',
-      price: 145.0,
+      id: 'g-19',
+      name: 'Fortune Kachi Ghani Pure Mustard Oil',
+      brand: 'Fortune',
+      unit: '1 Litre Bottle',
+      price: 149.0,
       compareAtPrice: 175.0,
-      imageUrl: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop',
+      imageUrl: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=600&auto=format&fit=crop',
       category: { name: 'Organic Staples' },
       isPrescriptionRequired: false,
       isMedicine: false,
       inStock: true,
       rating: 4.7,
-      ratingCount: 78,
+      ratingCount: 112,
     },
     {
-      id: 'g-8',
+      id: 'g-20',
+      name: 'Amul Pure Desi Cow Ghee (Tin)',
+      brand: 'Amul',
+      unit: '1 Litre Tin',
+      price: 595.0,
+      compareAtPrice: 650.0,
+      imageUrl: 'https://images.unsplash.com/photo-1589927986076-a58133819602?w=600&auto=format&fit=crop',
+      category: { name: 'Organic Staples' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.9,
+      ratingCount: 280,
+    },
+
+    // --- Beverages & Snacks ---
+    {
+      id: 'g-21',
+      name: 'Tata Tea Gold Premium Assam Blend',
+      brand: 'Tata Tea',
+      unit: '500g Pack',
+      price: 289.0,
+      compareAtPrice: 345.0,
+      imageUrl: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&auto=format&fit=crop',
+      category: { name: 'Beverages & Juices' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.8,
+      ratingCount: 145,
+    },
+    {
+      id: 'g-22',
+      name: 'Tropicana 100% Real Valencia Orange Juice',
+      brand: 'Tropicana',
+      unit: '1 Litre Tetra',
+      price: 135.0,
+      compareAtPrice: 160.0,
+      imageUrl: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?w=600&auto=format&fit=crop',
+      category: { name: 'Beverages & Juices' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.7,
+      ratingCount: 88,
+    },
+    {
+      id: 'g-23',
+      name: 'Whole Jumbo California Almonds',
+      brand: 'NutriDelight',
+      unit: '500g Pack',
+      price: 460.0,
+      compareAtPrice: 580.0,
+      imageUrl: 'https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=600&auto=format&fit=crop',
+      category: { name: 'Beverages & Juices' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.9,
+      ratingCount: 160,
+    },
+    {
+      id: 'g-24',
+      name: "Haldiram's Bikaneri Bhujia Crisp Sev",
+      brand: "Haldiram's",
+      unit: '400g Pack',
+      price: 115.0,
+      compareAtPrice: 135.0,
+      imageUrl: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281288?w=600&auto=format&fit=crop',
+      category: { name: 'Beverages & Juices' },
+      isPrescriptionRequired: false,
+      isMedicine: false,
+      inStock: true,
+      rating: 4.8,
+      ratingCount: 190,
+    },
+
+    // --- Health & Wellness ---
+    {
+      id: 'g-25',
       name: 'Vitamin C 1000mg + Zinc Effervescent',
       brand: 'HealthPlus Vitality',
-      unit: '20 Tablets',
+      unit: '20 Tablets Tube',
       price: 289.0,
       compareAtPrice: 350.0,
       imageUrl: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop',
-      category: { name: 'Pharmacy & Health' },
+      category: { name: 'Personal Care' },
       isPrescriptionRequired: false,
       isMedicine: true,
       inStock: true,
       rating: 4.9,
       ratingCount: 210,
     },
+    {
+      id: 'g-26',
+      name: 'Omron HEM-7120 Digital Arm BP Monitor',
+      brand: 'Omron Healthcare',
+      unit: '1 Unit + Cuff',
+      price: 1899.0,
+      compareAtPrice: 2480.0,
+      imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop',
+      category: { name: 'Personal Care' },
+      isPrescriptionRequired: false,
+      isMedicine: true,
+      inStock: true,
+      rating: 4.9,
+      ratingCount: 340,
+    },
+    {
+      id: 'g-27',
+      name: 'Dr Trust Waterproof Flexible Tip Thermometer',
+      brand: 'Dr Trust',
+      unit: '1 Unit',
+      price: 249.0,
+      compareAtPrice: 350.0,
+      imageUrl: 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=600&auto=format&fit=crop',
+      category: { name: 'Personal Care' },
+      isPrescriptionRequired: false,
+      isMedicine: true,
+      inStock: true,
+      rating: 4.8,
+      ratingCount: 155,
+    },
+    {
+      id: 'g-28',
+      name: 'Accu-Chek Active Blood Glucose Monitor Kit',
+      brand: 'Accu-Chek',
+      unit: '1 Kit + 10 Strips',
+      price: 1249.0,
+      compareAtPrice: 1599.0,
+      imageUrl: 'https://images.unsplash.com/photo-1615461066841-6116e61058f4?w=600&auto=format&fit=crop',
+      category: { name: 'Personal Care' },
+      isPrescriptionRequired: false,
+      isMedicine: true,
+      inStock: true,
+      rating: 4.9,
+      ratingCount: 275,
+    },
   ];
 
-  const displayProducts = popularProducts.length >= 4 ? popularProducts : defaultGroceryProducts;
+  const displayProducts = popularProducts.length >= 8 ? popularProducts : defaultGroceryProducts;
 
   // Filter products by active tab
   const filteredProducts = displayProducts.filter((p) => {
     if (activeTab === 'deals') return p.compareAtPrice && p.compareAtPrice > p.price;
-    if (activeTab === 'harvest') return !p.isMedicine;
+    if (activeTab === 'harvest') return !p.isMedicine && (p.category?.name?.includes('Fruit') || p.category?.name?.includes('Vegetable') || p.category?.name?.includes('Dairy'));
     if (activeTab === 'rated') return (p.rating || 4.8) >= 4.8;
     return true; // 'all'
   });
@@ -831,7 +1140,7 @@ export default function HomePage() {
 
               {/* Product Grid (4 col Desktop, 3 Tablet, 2 Mobile) */}
               <ProductGrid columns={4}>
-                {filteredProducts.slice(0, 8).map((prod) => (
+                {filteredProducts.slice(0, 12).map((prod) => (
                   <ProductCard
                     key={prod.id}
                     id={prod.id}
@@ -847,6 +1156,98 @@ export default function HomePage() {
                     inStock={prod.inStock !== false}
                     rating={prod.rating || 4.8}
                     ratingCount={prod.ratingCount || 36}
+                    onAddToCart={() => handleAddToCart(prod.id)}
+                    onQuickView={() => handleOpenQuickView(prod)}
+                  />
+                ))}
+              </ProductGrid>
+            </div>
+          </section>
+
+          {/* ========================================================================= */}
+          {/* 08.1. FRESH FARM HARVEST & DAIRY ESSENTIALS (8 FRESH ITEMS) */}
+          {/* ========================================================================= */}
+          <section className={CONTAINER}>
+            <div className="space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
+                <div>
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-700 uppercase tracking-wider">
+                    <Leaf className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>DIRECT FROM SUSTAINABLE FARMS</span>
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-0.5">
+                    Fresh Farm Harvest &amp; Daily Dairy
+                  </h2>
+                </div>
+
+                <Link href="/shop/fruits-vegetables" className="text-xs font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1">
+                  <span>EXPLORE FRESH HARVEST →</span>
+                </Link>
+              </div>
+
+              <ProductGrid columns={4}>
+                {displayProducts.filter((p) => !p.isMedicine && (p.category?.name?.includes('Fruit') || p.category?.name?.includes('Vegetable') || p.category?.name?.includes('Dairy') || p.category?.name?.includes('Bakery'))).slice(0, 8).map((prod) => (
+                  <ProductCard
+                    key={`harvest-${prod.id}`}
+                    id={prod.id}
+                    name={prod.name}
+                    brand={prod.brand}
+                    unit={prod.unit}
+                    price={typeof prod.price === 'number' ? prod.price : parseFloat(prod.price)}
+                    compareAtPrice={prod.compareAtPrice ? (typeof prod.compareAtPrice === 'number' ? prod.compareAtPrice : parseFloat(prod.compareAtPrice)) : null}
+                    imageUrl={prod.images?.[0]?.url || prod.imageUrl || undefined}
+                    categoryName={prod.category?.name || prod.categoryName}
+                    isPrescriptionRequired={prod.isPrescriptionRequired}
+                    isMedicine={prod.isMedicine}
+                    inStock={prod.inStock !== false}
+                    rating={prod.rating || 4.8}
+                    ratingCount={prod.ratingCount || 42}
+                    onAddToCart={() => handleAddToCart(prod.id)}
+                    onQuickView={() => handleOpenQuickView(prod)}
+                  />
+                ))}
+              </ProductGrid>
+            </div>
+          </section>
+
+          {/* ========================================================================= */}
+          {/* 08.2. PANTRY STAPLES, SNACKS & GOURMET BEVERAGES (8 PANTRY ITEMS) */}
+          {/* ========================================================================= */}
+          <section className={CONTAINER}>
+            <div className="space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
+                <div>
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-700 uppercase tracking-wider">
+                    <Sparkles className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>KITCHEN ESSENTIALS</span>
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-0.5">
+                    Pantry Staples &amp; Healthy Munchies
+                  </h2>
+                </div>
+
+                <Link href="/shop/staples-grains" className="text-xs font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1">
+                  <span>VIEW ALL STAPLES →</span>
+                </Link>
+              </div>
+
+              <ProductGrid columns={4}>
+                {displayProducts.filter((p) => !p.isMedicine && (p.category?.name?.includes('Staples') || p.category?.name?.includes('Beverages') || p.category?.name?.includes('Juices') || p.category?.name?.includes('Snacks'))).slice(0, 8).map((prod) => (
+                  <ProductCard
+                    key={`pantry-${prod.id}`}
+                    id={prod.id}
+                    name={prod.name}
+                    brand={prod.brand}
+                    unit={prod.unit}
+                    price={typeof prod.price === 'number' ? prod.price : parseFloat(prod.price)}
+                    compareAtPrice={prod.compareAtPrice ? (typeof prod.compareAtPrice === 'number' ? prod.compareAtPrice : parseFloat(prod.compareAtPrice)) : null}
+                    imageUrl={prod.images?.[0]?.url || prod.imageUrl || undefined}
+                    categoryName={prod.category?.name || prod.categoryName}
+                    isPrescriptionRequired={prod.isPrescriptionRequired}
+                    isMedicine={prod.isMedicine}
+                    inStock={prod.inStock !== false}
+                    rating={prod.rating || 4.8}
+                    ratingCount={prod.ratingCount || 58}
                     onAddToCart={() => handleAddToCart(prod.id)}
                     onQuickView={() => handleOpenQuickView(prod)}
                   />
