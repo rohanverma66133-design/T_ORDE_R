@@ -163,16 +163,14 @@ export function ProductCard({
               alt={name}
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                if (!target.src.includes('/images/products/fresh-broccoli.jpg')) {
-                  target.src = '/images/products/fresh-broccoli.jpg';
-                }
+                target.style.opacity = '0.3';
               }}
               className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
             />
           ) : (
             <div className="text-3xl sm:text-4xl select-none">
-              {isMedicine ? '💊' : '🥦'}
+              {isMedicine ? '💊' : '🛒'}
             </div>
           )}
 
