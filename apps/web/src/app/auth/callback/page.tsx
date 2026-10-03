@@ -18,7 +18,8 @@ function AuthCallbackContent() {
     const accessToken = searchParams.get('accessToken');
     const refreshToken = searchParams.get('refreshToken');
     const userStr = searchParams.get('user');
-    const redirectTarget = searchParams.get('redirect') || '/';
+    const rawRedirect = searchParams.get('redirect') || '/';
+    const redirectTarget = decodeURIComponent(rawRedirect).startsWith('/') ? decodeURIComponent(rawRedirect) : '/';
     const errorParam = searchParams.get('error');
 
     if (errorParam) {
@@ -39,10 +40,14 @@ function AuthCallbackContent() {
       login(accessToken, refreshToken, userData);
       setStatus('success');
 
-      // Redirect after showing welcome animation
+      // Fast, guaranteed redirect with window.location.replace
       const timer = setTimeout(() => {
-        router.push(redirectTarget);
-      }, 1200);
+        if (typeof window !== 'undefined') {
+          window.location.replace(redirectTarget);
+        } else {
+          router.replace(redirectTarget);
+        }
+      }, 250);
 
       return () => clearTimeout(timer);
     } catch (err) {
@@ -75,6 +80,17 @@ function AuthCallbackContent() {
               <h2 className="text-2xl font-black text-slate-950 mt-1">Welcome back, {userName}!</h2>
             </div>
             <p className="text-xs text-slate-500 font-medium">Redirecting you to your account...</p>
+            <button
+              type="button"
+              onClick={() => {
+                const rawRedirect = searchParams.get('redirect') || '/';
+                const target = decodeURIComponent(rawRedirect).startsWith('/') ? decodeURIComponent(rawRedirect) : '/';
+                window.location.replace(target);
+              }}
+              className="text-xs font-semibold text-emerald-600 hover:text-emerald-700 underline"
+            >
+              Click here if you are not redirected automatically
+            </button>
           </div>
         )}
 
