@@ -251,7 +251,7 @@ export default function HomePage() {
       unit: '2 Pcs (Pack)',
       price: 199.0,
       compareAtPrice: 250.0,
-      imageUrl: 'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/avocados.jpg',
       category: { name: 'Fruits & Vegetables' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -266,7 +266,7 @@ export default function HomePage() {
       unit: '500g Pack',
       price: 45.0,
       compareAtPrice: 60.0,
-      imageUrl: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/baby-carrots.jpg',
       category: { name: 'Fruits & Vegetables' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -281,7 +281,7 @@ export default function HomePage() {
       unit: '250g Box',
       price: 35.0,
       compareAtPrice: 45.0,
-      imageUrl: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/baby-spinach.jpg',
       category: { name: 'Fruits & Vegetables' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -296,7 +296,7 @@ export default function HomePage() {
       unit: '1 Dozen Box',
       price: 599.0,
       compareAtPrice: 750.0,
-      imageUrl: 'https://images.unsplash.com/photo-1553279768-865429fa0078?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/alphonso-mango.jpg',
       category: { name: 'Fruits & Vegetables' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -311,7 +311,7 @@ export default function HomePage() {
       unit: '1 kg Pack',
       price: 42.0,
       compareAtPrice: 55.0,
-      imageUrl: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/baby-potatoes.jpg',
       category: { name: 'Fruits & Vegetables' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -358,7 +358,7 @@ export default function HomePage() {
       unit: '500g Block',
       price: 265.0,
       compareAtPrice: 295.0,
-      imageUrl: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/butter.jpg',
       category: { name: 'Dairy & Eggs' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -373,7 +373,7 @@ export default function HomePage() {
       unit: '12 Eggs Box',
       price: 110.0,
       compareAtPrice: 135.0,
-      imageUrl: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/brown-eggs.jpg',
       category: { name: 'Dairy & Eggs' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -403,7 +403,7 @@ export default function HomePage() {
       unit: '400g Pack',
       price: 50.0,
       compareAtPrice: 60.0,
-      imageUrl: 'https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/sandwich-bread.jpg',
       category: { name: 'Bakery & Bread' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -420,7 +420,7 @@ export default function HomePage() {
       unit: '5 kg Bag',
       price: 399.0,
       compareAtPrice: 485.0,
-      imageUrl: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/basmati-rice.jpg',
       category: { name: 'Organic Staples' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -435,7 +435,7 @@ export default function HomePage() {
       unit: '5 kg Bag',
       price: 245.0,
       compareAtPrice: 275.0,
-      imageUrl: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/wheat-atta.jpg',
       category: { name: 'Organic Staples' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -450,7 +450,7 @@ export default function HomePage() {
       unit: '1 kg Bag',
       price: 159.0,
       compareAtPrice: 185.0,
-      imageUrl: 'https://images.unsplash.com/photo-1515543904379-3d757afe72e3?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/toor-dal.jpg',
       category: { name: 'Organic Staples' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -465,7 +465,7 @@ export default function HomePage() {
       unit: '500 ml Bottle',
       price: 450.0,
       compareAtPrice: 550.0,
-      imageUrl: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/olive-oil.jpg',
       category: { name: 'Organic Staples' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -480,7 +480,7 @@ export default function HomePage() {
       unit: '1 Litre Bottle',
       price: 149.0,
       compareAtPrice: 175.0,
-      imageUrl: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/mustard-oil.jpg',
       category: { name: 'Organic Staples' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -495,7 +495,7 @@ export default function HomePage() {
       unit: '1 Litre Tin',
       price: 595.0,
       compareAtPrice: 650.0,
-      imageUrl: 'https://images.unsplash.com/photo-1589927986076-a58133819602?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/desi-ghee.jpg',
       category: { name: 'Organic Staples' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -512,7 +512,7 @@ export default function HomePage() {
       unit: '500g Pack',
       price: 289.0,
       compareAtPrice: 345.0,
-      imageUrl: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/assam-tea.jpg',
       category: { name: 'Beverages & Juices' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -527,7 +527,7 @@ export default function HomePage() {
       unit: '1 Litre Tetra',
       price: 135.0,
       compareAtPrice: 160.0,
-      imageUrl: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/orange-juice.jpg',
       category: { name: 'Beverages & Juices' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -542,7 +542,7 @@ export default function HomePage() {
       unit: '500g Pack',
       price: 460.0,
       compareAtPrice: 580.0,
-      imageUrl: 'https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/almonds.jpg',
       category: { name: 'Beverages & Juices' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -557,7 +557,7 @@ export default function HomePage() {
       unit: '400g Pack',
       price: 115.0,
       compareAtPrice: 135.0,
-      imageUrl: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281288?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/bhujia.jpg',
       category: { name: 'Beverages & Juices' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -574,7 +574,7 @@ export default function HomePage() {
       unit: '20 Tablets Tube',
       price: 289.0,
       compareAtPrice: 350.0,
-      imageUrl: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/vitamin-c.jpg',
       category: { name: 'Personal Care' },
       isPrescriptionRequired: false,
       isMedicine: true,
@@ -589,7 +589,7 @@ export default function HomePage() {
       unit: '1 Unit + Cuff',
       price: 1899.0,
       compareAtPrice: 2480.0,
-      imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/bp-monitor.jpg',
       category: { name: 'Personal Care' },
       isPrescriptionRequired: false,
       isMedicine: true,
@@ -604,7 +604,7 @@ export default function HomePage() {
       unit: '1 Unit',
       price: 249.0,
       compareAtPrice: 350.0,
-      imageUrl: 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/digital-thermometer.jpg',
       category: { name: 'Personal Care' },
       isPrescriptionRequired: false,
       isMedicine: true,
@@ -619,7 +619,7 @@ export default function HomePage() {
       unit: '1 Kit + 10 Strips',
       price: 1249.0,
       compareAtPrice: 1599.0,
-      imageUrl: 'https://images.unsplash.com/photo-1615461066841-6116e61058f4?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/glucose-meter.jpg',
       category: { name: 'Personal Care' },
       isPrescriptionRequired: false,
       isMedicine: true,
@@ -629,21 +629,36 @@ export default function HomePage() {
     },
   ];
 
-  // Guaranteed full catalog display: prioritize rich grocery items first, then merge live API items
-  const displayProducts = [
-    ...defaultGroceryProducts,
-    ...(popularProducts.filter((p) => !defaultGroceryProducts.some((d) => d.name.toLowerCase() === (p.name || '').toLowerCase()))),
-  ];
+  // Dedicated Non-Duplicated Product Sets For Every Section:
+  // 1. Deal of the Day: Featured discount products across categories
+  const dealSectionProducts = defaultGroceryProducts.filter((p) =>
+    ['g-7', 'g-18', 'g-20', 'g-23', 'g-21', 'g-22', 'g-24', 'g-13'].includes(p.id)
+  );
 
-  // Filter products by active tab
-  const filteredProducts = displayProducts.filter((p) => {
-    if (activeTab === 'deals') return p.compareAtPrice && p.compareAtPrice > p.price;
-    if (activeTab === 'harvest') return !p.isMedicine && (p.category?.name?.includes('Fruit') || p.category?.name?.includes('Vegetable') || p.category?.name?.includes('Dairy') || p.category?.name?.includes('Bakery'));
-    if (activeTab === 'rated') return (p.rating || 4.8) >= 4.8;
+  // 2. Fresh Farm Harvest: Fresh Vegetables, Fruits & Dairy exclusively
+  const harvestSectionProducts = defaultGroceryProducts.filter((p) =>
+    ['g-1', 'g-2', 'g-3', 'g-4', 'g-5', 'g-6', 'g-9', 'g-10'].includes(p.id)
+  );
+
+  // 3. Pantry Staples: Rice, Atta, Dal, Mustard Oil, Butter, Eggs, Bread, Potatoes
+  const pantrySectionProducts = defaultGroceryProducts.filter((p) =>
+    ['g-15', 'g-16', 'g-17', 'g-19', 'g-11', 'g-12', 'g-14', 'g-8'].includes(p.id)
+  );
+
+  // 4. Pharmacy & Healthcare: Certified medical & wellness essentials
+  const pharmacySectionProducts = defaultGroceryProducts.filter((p) =>
+    ['g-25', 'g-26', 'g-27', 'g-28'].includes(p.id)
+  );
+
+  // Filter products for the Deal of the Day interactive tabs
+  const filteredProducts = dealSectionProducts.filter((p) => {
+    if (activeTab === 'deals') return (p.compareAtPrice! - p.price) / p.compareAtPrice! >= 0.15;
+    if (activeTab === 'harvest') return ['Fruits & Vegetables', 'Bakery & Bread'].includes(p.category?.name || '');
+    if (activeTab === 'rated') return (p.rating || 4.8) >= 4.9;
     return true; // 'all'
   });
 
-  const featuredDealProduct = defaultGroceryProducts[0] || displayProducts[0];
+  const featuredDealProduct = defaultGroceryProducts.find((p) => p.id === 'g-7') || defaultGroceryProducts[0]!;
 
   return (
     <div suppressHydrationWarning className="min-h-screen flex flex-col justify-between bg-[#F8FAFC] font-sans text-slate-900 selection:bg-emerald-100 selection:text-emerald-900">
@@ -1079,8 +1094,8 @@ export default function HomePage() {
                   {/* Deal Image */}
                   <div className="md:col-span-3 w-full max-w-[160px] aspect-square rounded-xl overflow-hidden bg-white border border-emerald-100 p-2 flex items-center justify-center mx-auto md:mx-0 shadow-xs">
                     <img
-                      src={featuredDealProduct?.imageUrl || featuredDealProduct?.images?.[0]?.url || defaultGroceryProducts[0]?.imageUrl || ''}
-                      alt={featuredDealProduct?.name || 'Featured deal'}
+                      src={featuredDealProduct.imageUrl}
+                      alt={featuredDealProduct.name}
                       className="h-full w-full object-contain"
                     />
                   </div>
@@ -1153,8 +1168,8 @@ export default function HomePage() {
                     unit={prod.unit}
                     price={typeof prod.price === 'number' ? prod.price : parseFloat(prod.price)}
                     compareAtPrice={prod.compareAtPrice ? (typeof prod.compareAtPrice === 'number' ? prod.compareAtPrice : parseFloat(prod.compareAtPrice)) : null}
-                    imageUrl={prod.imageUrl || prod.images?.[0]?.url || undefined}
-                    categoryName={prod.category?.name || prod.categoryName}
+                    imageUrl={prod.imageUrl}
+                    categoryName={prod.category?.name}
                     isPrescriptionRequired={prod.isPrescriptionRequired}
                     isMedicine={prod.isMedicine}
                     inStock={prod.inStock !== false}
@@ -1190,7 +1205,7 @@ export default function HomePage() {
               </div>
 
               <ProductGrid columns={4}>
-                {defaultGroceryProducts.filter((p) => ['Fruits & Vegetables', 'Dairy & Eggs', 'Bakery & Bread'].includes(p.category?.name || '')).slice(0, 8).map((prod) => (
+                {harvestSectionProducts.map((prod) => (
                   <ProductCard
                     key={`harvest-${prod.id}`}
                     id={prod.id}
@@ -1199,8 +1214,8 @@ export default function HomePage() {
                     unit={prod.unit}
                     price={typeof prod.price === 'number' ? prod.price : parseFloat(prod.price)}
                     compareAtPrice={prod.compareAtPrice ? (typeof prod.compareAtPrice === 'number' ? prod.compareAtPrice : parseFloat(prod.compareAtPrice)) : null}
-                    imageUrl={prod.imageUrl || prod.images?.[0]?.url || undefined}
-                    categoryName={prod.category?.name || prod.categoryName}
+                    imageUrl={prod.imageUrl}
+                    categoryName={prod.category?.name}
                     isPrescriptionRequired={prod.isPrescriptionRequired}
                     isMedicine={prod.isMedicine}
                     inStock={prod.inStock !== false}
@@ -1236,7 +1251,7 @@ export default function HomePage() {
               </div>
 
               <ProductGrid columns={4}>
-                {defaultGroceryProducts.filter((p) => ['Organic Staples', 'Beverages & Juices'].includes(p.category?.name || '')).slice(0, 8).map((prod) => (
+                {pantrySectionProducts.map((prod) => (
                   <ProductCard
                     key={`pantry-${prod.id}`}
                     id={prod.id}
@@ -1245,8 +1260,8 @@ export default function HomePage() {
                     unit={prod.unit}
                     price={typeof prod.price === 'number' ? prod.price : parseFloat(prod.price)}
                     compareAtPrice={prod.compareAtPrice ? (typeof prod.compareAtPrice === 'number' ? prod.compareAtPrice : parseFloat(prod.compareAtPrice)) : null}
-                    imageUrl={prod.imageUrl || prod.images?.[0]?.url || undefined}
-                    categoryName={prod.category?.name || prod.categoryName}
+                    imageUrl={prod.imageUrl}
+                    categoryName={prod.category?.name}
                     isPrescriptionRequired={prod.isPrescriptionRequired}
                     isMedicine={prod.isMedicine}
                     inStock={prod.inStock !== false}
@@ -1282,7 +1297,7 @@ export default function HomePage() {
               </div>
 
               <ProductGrid columns={4}>
-                {defaultGroceryProducts.filter((p) => p.isMedicine || p.category?.name === 'Personal Care').slice(0, 4).map((prod) => (
+                {pharmacySectionProducts.map((prod) => (
                   <ProductCard
                     key={`health-${prod.id}`}
                     id={prod.id}
@@ -1291,8 +1306,8 @@ export default function HomePage() {
                     unit={prod.unit}
                     price={typeof prod.price === 'number' ? prod.price : parseFloat(prod.price)}
                     compareAtPrice={prod.compareAtPrice ? (typeof prod.compareAtPrice === 'number' ? prod.compareAtPrice : parseFloat(prod.compareAtPrice)) : null}
-                    imageUrl={prod.imageUrl || prod.images?.[0]?.url || undefined}
-                    categoryName={prod.category?.name || prod.categoryName}
+                    imageUrl={prod.imageUrl}
+                    categoryName={prod.category?.name}
                     isPrescriptionRequired={prod.isPrescriptionRequired}
                     isMedicine={prod.isMedicine}
                     inStock={prod.inStock !== false}

@@ -158,7 +158,18 @@ export function ProductCard({
         {/* Product Image Container */}
         <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-2 sm:mb-3 group-hover:bg-slate-100/60 transition-colors p-1.5 sm:p-2">
           {imageUrl ? (
-            <img src={imageUrl} alt={name} className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+            <img
+              src={imageUrl}
+              alt={name}
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                if (!target.src.includes('/images/products/fresh-broccoli.jpg')) {
+                  target.src = '/images/products/fresh-broccoli.jpg';
+                }
+              }}
+              className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+            />
           ) : (
             <div className="text-3xl sm:text-4xl select-none">
               {isMedicine ? '💊' : '🥦'}
