@@ -196,7 +196,7 @@ export default function HomePage() {
     }
   };
 
-  // Curated fallback product list with 28+ authentic high-quality grocery products
+  // Curated fallback product list with 28+ authentic high-quality grocery products with studio photography
   const defaultGroceryProducts = [
     // --- Fresh Fruits & Vegetables ---
     {
@@ -206,7 +206,7 @@ export default function HomePage() {
       unit: '500g Pack',
       price: 68.0,
       compareAtPrice: 85.0,
-      imageUrl: 'https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/fresh-broccoli.jpg',
       category: { name: 'Fruits & Vegetables' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -221,7 +221,7 @@ export default function HomePage() {
       unit: '250g Box',
       price: 55.0,
       compareAtPrice: 70.0,
-      imageUrl: 'https://images.unsplash.com/photo-1546470427-e26264be0b11?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/cherry-tomatoes.jpg',
       category: { name: 'Fruits & Vegetables' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -236,7 +236,7 @@ export default function HomePage() {
       unit: '1 kg Box (4-5 pcs)',
       price: 180.0,
       compareAtPrice: 220.0,
-      imageUrl: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/red-apples.jpg',
       category: { name: 'Fruits & Vegetables' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -328,7 +328,7 @@ export default function HomePage() {
       unit: '1 Litre',
       price: 74.0,
       compareAtPrice: 95.0,
-      imageUrl: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/a2-cow-milk.jpg',
       category: { name: 'Dairy & Eggs' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -343,7 +343,7 @@ export default function HomePage() {
       unit: '200g Block',
       price: 95.0,
       compareAtPrice: 115.0,
-      imageUrl: 'https://images.unsplash.com/photo-1589927986076-a58133819602?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/fresh-paneer.jpg',
       category: { name: 'Dairy & Eggs' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -388,7 +388,7 @@ export default function HomePage() {
       unit: '400g Loaf',
       price: 89.0,
       compareAtPrice: 110.0,
-      imageUrl: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop',
+      imageUrl: '/images/products/sourdough-bread.jpg',
       category: { name: 'Bakery & Bread' },
       isPrescriptionRequired: false,
       isMedicine: false,
@@ -629,17 +629,21 @@ export default function HomePage() {
     },
   ];
 
-  const displayProducts = popularProducts.length >= 8 ? popularProducts : defaultGroceryProducts;
+  // Guaranteed full catalog display: prioritize rich grocery items first, then merge live API items
+  const displayProducts = [
+    ...defaultGroceryProducts,
+    ...(popularProducts.filter((p) => !defaultGroceryProducts.some((d) => d.name.toLowerCase() === (p.name || '').toLowerCase()))),
+  ];
 
   // Filter products by active tab
   const filteredProducts = displayProducts.filter((p) => {
     if (activeTab === 'deals') return p.compareAtPrice && p.compareAtPrice > p.price;
-    if (activeTab === 'harvest') return !p.isMedicine && (p.category?.name?.includes('Fruit') || p.category?.name?.includes('Vegetable') || p.category?.name?.includes('Dairy'));
+    if (activeTab === 'harvest') return !p.isMedicine && (p.category?.name?.includes('Fruit') || p.category?.name?.includes('Vegetable') || p.category?.name?.includes('Dairy') || p.category?.name?.includes('Bakery'));
     if (activeTab === 'rated') return (p.rating || 4.8) >= 4.8;
     return true; // 'all'
   });
 
-  const featuredDealProduct = displayProducts[0] || defaultGroceryProducts[0];
+  const featuredDealProduct = defaultGroceryProducts[0] || displayProducts[0];
 
   return (
     <div suppressHydrationWarning className="min-h-screen flex flex-col justify-between bg-[#F8FAFC] font-sans text-slate-900 selection:bg-emerald-100 selection:text-emerald-900">
@@ -1140,16 +1144,16 @@ export default function HomePage() {
 
               {/* Product Grid (4 col Desktop, 3 Tablet, 2 Mobile) */}
               <ProductGrid columns={4}>
-                {filteredProducts.slice(0, 12).map((prod) => (
+                {filteredProducts.slice(0, 8).map((prod) => (
                   <ProductCard
-                    key={prod.id}
+                    key={`deal-${prod.id}`}
                     id={prod.id}
                     name={prod.name}
                     brand={prod.brand}
                     unit={prod.unit}
                     price={typeof prod.price === 'number' ? prod.price : parseFloat(prod.price)}
                     compareAtPrice={prod.compareAtPrice ? (typeof prod.compareAtPrice === 'number' ? prod.compareAtPrice : parseFloat(prod.compareAtPrice)) : null}
-                    imageUrl={prod.images?.[0]?.url || prod.imageUrl || undefined}
+                    imageUrl={prod.imageUrl || prod.images?.[0]?.url || undefined}
                     categoryName={prod.category?.name || prod.categoryName}
                     isPrescriptionRequired={prod.isPrescriptionRequired}
                     isMedicine={prod.isMedicine}
@@ -1186,7 +1190,7 @@ export default function HomePage() {
               </div>
 
               <ProductGrid columns={4}>
-                {displayProducts.filter((p) => !p.isMedicine && (p.category?.name?.includes('Fruit') || p.category?.name?.includes('Vegetable') || p.category?.name?.includes('Dairy') || p.category?.name?.includes('Bakery'))).slice(0, 8).map((prod) => (
+                {defaultGroceryProducts.filter((p) => ['Fruits & Vegetables', 'Dairy & Eggs', 'Bakery & Bread'].includes(p.category?.name || '')).slice(0, 8).map((prod) => (
                   <ProductCard
                     key={`harvest-${prod.id}`}
                     id={prod.id}
@@ -1195,7 +1199,7 @@ export default function HomePage() {
                     unit={prod.unit}
                     price={typeof prod.price === 'number' ? prod.price : parseFloat(prod.price)}
                     compareAtPrice={prod.compareAtPrice ? (typeof prod.compareAtPrice === 'number' ? prod.compareAtPrice : parseFloat(prod.compareAtPrice)) : null}
-                    imageUrl={prod.images?.[0]?.url || prod.imageUrl || undefined}
+                    imageUrl={prod.imageUrl || prod.images?.[0]?.url || undefined}
                     categoryName={prod.category?.name || prod.categoryName}
                     isPrescriptionRequired={prod.isPrescriptionRequired}
                     isMedicine={prod.isMedicine}
@@ -1232,7 +1236,7 @@ export default function HomePage() {
               </div>
 
               <ProductGrid columns={4}>
-                {displayProducts.filter((p) => !p.isMedicine && (p.category?.name?.includes('Staples') || p.category?.name?.includes('Beverages') || p.category?.name?.includes('Juices') || p.category?.name?.includes('Snacks'))).slice(0, 8).map((prod) => (
+                {defaultGroceryProducts.filter((p) => ['Organic Staples', 'Beverages & Juices'].includes(p.category?.name || '')).slice(0, 8).map((prod) => (
                   <ProductCard
                     key={`pantry-${prod.id}`}
                     id={prod.id}
@@ -1241,13 +1245,59 @@ export default function HomePage() {
                     unit={prod.unit}
                     price={typeof prod.price === 'number' ? prod.price : parseFloat(prod.price)}
                     compareAtPrice={prod.compareAtPrice ? (typeof prod.compareAtPrice === 'number' ? prod.compareAtPrice : parseFloat(prod.compareAtPrice)) : null}
-                    imageUrl={prod.images?.[0]?.url || prod.imageUrl || undefined}
+                    imageUrl={prod.imageUrl || prod.images?.[0]?.url || undefined}
                     categoryName={prod.category?.name || prod.categoryName}
                     isPrescriptionRequired={prod.isPrescriptionRequired}
                     isMedicine={prod.isMedicine}
                     inStock={prod.inStock !== false}
                     rating={prod.rating || 4.8}
                     ratingCount={prod.ratingCount || 58}
+                    onAddToCart={() => handleAddToCart(prod.id)}
+                    onQuickView={() => handleOpenQuickView(prod)}
+                  />
+                ))}
+              </ProductGrid>
+            </div>
+          </section>
+
+          {/* ========================================================================= */}
+          {/* 08.3. PHARMACY & VERIFIED HEALTHCARE (4 WELLNESS ESSENTIALS) */}
+          {/* ========================================================================= */}
+          <section className={CONTAINER}>
+            <div className="space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
+                <div>
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-700 uppercase tracking-wider">
+                    <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>DOCTOR VERIFIED</span>
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-0.5">
+                    Pharmacy &amp; Health Essentials
+                  </h2>
+                </div>
+
+                <Link href="/shop/wellness-otc" className="text-xs font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1">
+                  <span>VIEW PHARMACY CATALOG →</span>
+                </Link>
+              </div>
+
+              <ProductGrid columns={4}>
+                {defaultGroceryProducts.filter((p) => p.isMedicine || p.category?.name === 'Personal Care').slice(0, 4).map((prod) => (
+                  <ProductCard
+                    key={`health-${prod.id}`}
+                    id={prod.id}
+                    name={prod.name}
+                    brand={prod.brand}
+                    unit={prod.unit}
+                    price={typeof prod.price === 'number' ? prod.price : parseFloat(prod.price)}
+                    compareAtPrice={prod.compareAtPrice ? (typeof prod.compareAtPrice === 'number' ? prod.compareAtPrice : parseFloat(prod.compareAtPrice)) : null}
+                    imageUrl={prod.imageUrl || prod.images?.[0]?.url || undefined}
+                    categoryName={prod.category?.name || prod.categoryName}
+                    isPrescriptionRequired={prod.isPrescriptionRequired}
+                    isMedicine={prod.isMedicine}
+                    inStock={prod.inStock !== false}
+                    rating={prod.rating || 4.9}
+                    ratingCount={prod.ratingCount || 120}
                     onAddToCart={() => handleAddToCart(prod.id)}
                     onQuickView={() => handleOpenQuickView(prod)}
                   />
