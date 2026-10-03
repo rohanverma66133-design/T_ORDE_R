@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Post, Req, Res, Query, BadRequestException, Next } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res, Query, BadRequestException, UseGuards } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import type { AppEnv } from '../../config/env';
-import { Request, Response, NextFunction } from 'express';
-import * as passport from 'passport';
+import { Request, Response } from 'express';
+import { AuthGuard } from '@nestjs/passport';
+import { GoogleAuthGuard } from './google.guard';
 import {
   changePasswordSchema,
   loginWithPasswordSchema,
@@ -30,59 +31,39 @@ export class AuthController {
   ) {}
 
   @Public()
+  @UseGuards(GoogleAuthGuard)
   @Get('google')
-  async googleAuth(
-    @Req() req: Request,
-    @Res() res: Response,
-    @Next() next: NextFunction,
-    @Query('redirect') redirectQuery?: string,
-  ) {
-    const clientId = this.config.get('GOOGLE_CLIENT_ID', { infer: true });
-    const clientSecret = this.config.get('GOOGLE_CLIENT_SECRET', { infer: true });
-    const frontendUrl = this.config.get('FRONTEND_URL', { infer: true }) || 'http://localhost:3002';
-
-    if (!clientId || !clientSecret || clientId.trim().length === 0 || clientId === 'placeholder_client_id') {
-      const errorMsg = 'Google OAuth credentials (GOOGLE_CLIENT_ID & GOOGLE_CLIENT_SECRET) are not configured in Render environment variables.';
-      return res.redirect(`${frontendUrl}/login?error=${encodeURIComponent(errorMsg)}`);
-    }
-
-    try {
-      const state = redirectQuery || '/';
-      return passport.authenticate('google', { scope: ['email', 'profile'], state })(req, res, next);
-    } catch (err: any) {
-      const errorMsg = err?.message || 'Failed to initiate Google sign in';
-      return res.redirect(`${frontendUrl}/login?error=${encodeURIComponent(errorMsg)}`);
-    }
+  googleAuth(@Req() _req: Request) {
+    // Initiates Google OAuth redirection via NestJS GoogleAuthGuard
   }
 
   @Public()
+  @UseGuards(AuthGuard('google'))
   @Get('google/callback')
   async googleAuthCallback(
-    @Req() req: Request,
+    @Req() req: any,
     @Res() res: Response,
-    @Next() next: NextFunction,
     @Query('state') stateQuery?: string,
     @Query('redirect') redirectQuery?: string,
   ) {
     const frontendUrl = this.config.get('FRONTEND_URL', { infer: true }) || 'http://localhost:3002';
+    const googleRes = req.user;
 
-    return passport.authenticate('google', { session: false }, (err: any, googleRes: any) => {
-      if (err || !googleRes || !googleRes.tokens) {
-        const errorMsg = err?.message || 'Google Authentication Failed or Cancelled';
-        return res.redirect(`${frontendUrl}/login?error=${encodeURIComponent(errorMsg)}`);
-      }
+    if (!googleRes || !googleRes.tokens) {
+      const errorMsg = 'Google Authentication Failed or Cancelled';
+      return res.redirect(`${frontendUrl}/login?error=${encodeURIComponent(errorMsg)}`);
+    }
 
-      this.setRefreshTokenCookie(res, googleRes.tokens.refreshToken);
-      const targetRedirect = stateQuery || redirectQuery || '/';
+    this.setRefreshTokenCookie(res, googleRes.tokens.refreshToken);
+    const targetRedirect = stateQuery || redirectQuery || '/';
 
-      const redirectUrl = new URL(`${frontendUrl}/auth/callback`);
-      redirectUrl.searchParams.set('accessToken', googleRes.tokens.accessToken);
-      redirectUrl.searchParams.set('refreshToken', googleRes.tokens.refreshToken);
-      redirectUrl.searchParams.set('user', JSON.stringify(googleRes.user));
-      redirectUrl.searchParams.set('redirect', targetRedirect);
+    const redirectUrl = new URL(`${frontendUrl}/auth/callback`);
+    redirectUrl.searchParams.set('accessToken', googleRes.tokens.accessToken);
+    redirectUrl.searchParams.set('refreshToken', googleRes.tokens.refreshToken);
+    redirectUrl.searchParams.set('user', JSON.stringify(googleRes.user));
+    redirectUrl.searchParams.set('redirect', targetRedirect);
 
-      return res.redirect(redirectUrl.toString());
-    })(req, res, next);
+    return res.redirect(redirectUrl.toString());
   }
 
   @Public()

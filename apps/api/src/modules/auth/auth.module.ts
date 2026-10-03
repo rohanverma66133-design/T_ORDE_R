@@ -15,6 +15,7 @@ import {
   ResendEmailOtpProvider,
 } from './otp.provider';
 import { GoogleStrategy } from './google.strategy';
+import { GoogleAuthGuard } from './google.guard';
 import { ConfigService } from '@nestjs/config';
 import type { AppEnv } from '../../config/env';
 
@@ -27,6 +28,7 @@ import type { AppEnv } from '../../config/env';
     TokenService,
     JwtStrategy,
     GoogleStrategy,
+    GoogleAuthGuard,
     ConsoleOtpProvider,
     TwilioSmsOtpProvider,
     EmailOtpProvider,
