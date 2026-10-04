@@ -29,13 +29,13 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const DEFAULT_COORDS: GeoCoordinates = { lat: 21.1700, lng: 72.8300 };
+const DEFAULT_COORDS: GeoCoordinates = { lat: 26.0461, lng: 83.5186 };
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<UserProfile | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [location, setLocationState] = useState('Town Center, Sector 4');
+  const [location, setLocationState] = useState('Dohrighat Town Center (275303)');
   const [userCoords, setUserCoordsState] = useState<GeoCoordinates>(DEFAULT_COORDS);
 
   const [isMounted, setIsMounted] = useState(false);

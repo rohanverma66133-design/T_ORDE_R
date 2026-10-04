@@ -256,8 +256,8 @@ export default function HelpPage() {
                     <PhoneCall className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-black text-slate-900">Direct Town Hotline</h4>
-                    <p className="text-xs text-emerald-700 font-black">+91 1800-TORD-CARE</p>
+                    <h4 className="text-xs font-black text-slate-900">Dohrighat Town Helpline</h4>
+                    <p className="text-xs text-emerald-700 font-black">+91 73800-287-672</p>
                   </div>
                 </div>
 
@@ -267,7 +267,7 @@ export default function HelpPage() {
                   </div>
                   <div>
                     <h4 className="text-xs font-black text-slate-900">Email Support</h4>
-                    <p className="text-xs text-slate-600 font-bold">support@tordfresh.in</p>
+                    <p className="text-xs text-slate-600 font-bold">care.dohrighat@tord.in</p>
                   </div>
                 </div>
               </div>

@@ -116,7 +116,7 @@ export function SiteHeader() {
               onClick={() => setIsLocationOpen(true)}
               className="text-white hover:text-[#B4F83C] font-semibold underline underline-offset-2 flex items-center gap-1 cursor-pointer min-w-0"
             >
-              <span className="truncate max-w-[140px] xs:max-w-[200px] sm:max-w-xs">{location || 'Town Center, Sector 4'}</span>
+              <span className="truncate max-w-[140px] xs:max-w-[200px] sm:max-w-xs">{location || 'Dohrighat Main Market (275303)'}</span>
               <ChevronDown className="h-3 w-3 text-emerald-400 shrink-0" />
             </button>
           </div>
@@ -133,7 +133,7 @@ export function SiteHeader() {
               </span>
               <span className="flex items-center gap-1 text-white font-medium">
                 <Phone className="h-3 w-3 text-[#B4F83C]" />
-                <span>1800-287-672</span>
+                <span>Dohrighat: +91 73800-287-672</span>
               </span>
             </div>
           </div>

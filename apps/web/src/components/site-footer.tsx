@@ -82,15 +82,15 @@ export function SiteFooter() {
             <div className="space-y-2.5 text-emerald-100/80">
               <p className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Sector 4 Express Dispatch Hub, Town Market Plaza</span>
+                <span>Main Market Road, Dohrighat Town Hub, Mau, Uttar Pradesh - 275303</span>
               </p>
               <p className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-emerald-400 shrink-0" />
-                <span className="font-bold text-white">+91 1800-287-672</span>
+                <span className="font-bold text-white">Dohrighat Helpline: +91 73800-287-672</span>
               </p>
               <p className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-emerald-400 shrink-0" />
-                <span>care@tord.in</span>
+                <span>care.dohrighat@tord.in</span>
               </p>
               <p className="flex items-center gap-2 text-emerald-300">
                 <Clock className="h-4 w-4 text-emerald-400 shrink-0" />
@@ -100,11 +100,23 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* Bottom Legal & Payment Row */}
-        <div className="pt-8 border-t border-emerald-900/80 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-emerald-200/60">
-          <p>© 2026 TORD Marketplace Inc. All rights reserved.</p>
+        {/* Bottom Legal & Payment Row with Professional Developer Attribution */}
+        <div className="pt-8 border-t border-emerald-900/80 flex flex-col lg:flex-row items-center justify-between gap-4 text-xs text-emerald-200/60">
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            <p>© 2026 TORD Marketplace Inc. All rights reserved.</p>
+            <span className="hidden sm:inline text-emerald-800">•</span>
+            
+            {/* Professional Developer Attribution */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#061B12] border border-emerald-500/40 text-emerald-300 shadow-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#B4F83C] animate-pulse" />
+              <span className="text-[11px] font-medium text-emerald-200/90">Engineered &amp; Designed by</span>
+              <span className="text-[11px] font-black text-white tracking-wider uppercase bg-emerald-800/80 px-2 py-0.5 rounded border border-emerald-600/50 shadow-xs">
+                SHUBHAM VERMA
+              </span>
+            </div>
+          </div>
 
-          <div className="flex items-center gap-3 text-emerald-100/90 font-medium">
+          <div className="flex items-center gap-3 text-emerald-100/90 font-medium text-[11px]">
             <span className="flex items-center gap-1"><CreditCard className="h-3.5 w-3.5 text-emerald-400" /> UPI / Google Pay</span>
             <span>•</span>
             <span>Visa</span>
@@ -116,7 +128,7 @@ export function SiteFooter() {
             <span>Cash on Delivery</span>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 text-[11px]">
             <Link href="/help" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/help" className="hover:text-white transition-colors">Terms of Service</Link>
             <Link href="/help" className="hover:text-white transition-colors">Refund Policy</Link>
