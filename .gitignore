@@ -9,6 +9,8 @@ test-results
 !/apps/api/src/storage
 *.log
 *.tsbuildinfo
+*.mp4
+!/apps/web/public/videos/*.mp4
 .env
 .env.local
 .env.*.local

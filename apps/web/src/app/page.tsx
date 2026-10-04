@@ -7,6 +7,7 @@ import { SiteFooter } from '@/components/site-footer';
 import { ApiStatusCard } from '@/components/api-status-card';
 import { useToast } from '@/components/toast';
 import { QuickViewModal, QuickViewProduct } from '@/components/quick-view-modal';
+import { TransparentHeroVideo } from '@/components/transparent-hero-video';
 import {
   ProductCard,
   ProductGrid,
@@ -66,43 +67,6 @@ export default function HomePage() {
   // Quick View Modal state
   const [selectedQuickView, setSelectedQuickView] = useState<QuickViewProduct | null>(null);
   const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
-
-  // Hero Video State (Professional Autoplay & Seamless Playback)
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
-  const [showFeedback, setShowFeedback] = useState(false);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        setIsPlaying(false);
-      });
-    }
-  }, []);
-
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current.play()
-          .then(() => setIsPlaying(true))
-          .catch(() => {});
-      } else {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      }
-      setShowFeedback(true);
-      setTimeout(() => setShowFeedback(false), 700);
-    }
-  };
-
-  const toggleMute = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsMuted(videoRef.current.muted);
-    }
-  };
 
   useEffect(() => {
     // 1. Categories
@@ -739,65 +703,17 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Right Column: Seamless Full-Height Video Showcase (Frameless) */}
+              {/* Right Column: Seamless Full-Height Video Showcase with Real-Time Background Removal & Forest-Green Blend */}
               <div className="lg:col-span-6 xl:col-span-7 relative w-full h-full min-h-[440px] sm:min-h-[520px] lg:min-h-[580px] xl:min-h-[660px] flex items-center justify-center">
-                <div
-                  className="relative w-full h-full flex items-center justify-center cursor-pointer select-none group"
-                  onClick={togglePlay}
-                  title={isPlaying ? 'Click to pause' : 'Click to play'}
-                >
-                  {/* Subtle ambient green glow behind video */}
-                  <div className="absolute inset-0 bg-radial from-emerald-500/15 via-transparent to-transparent rounded-full blur-3xl transform scale-110 pointer-events-none" />
+                {/* Subtle ambient green glow behind video */}
+                <div className="absolute inset-0 bg-radial from-emerald-500/20 via-[#B4F83C]/5 to-transparent rounded-full blur-3xl transform scale-110 pointer-events-none" />
 
-                  {/* Cinematic Video Element - Frameless & Blended with Hero Background */}
-                  <video
-                    ref={videoRef}
-                    src="/videos/hero-basket-video.mp4"
-                    poster="/images/hero-basket.png"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="auto"
-                    className="w-full h-full max-h-[660px] xl:max-h-[720px] object-contain filter drop-shadow-[0_25px_50px_rgba(0,0,0,0.6)] transition-transform duration-700 ease-out will-change-transform group-hover:scale-[1.01]"
-                  />
-
-                  {/* Play/Pause Animated Center Feedback Splash */}
-                  {showFeedback && (
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30 transition-all duration-300">
-                      <div className="h-16 w-16 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-2xl">
-                        {isPlaying ? (
-                          <Play className="h-7 w-7 translate-x-0.5 fill-current text-[#B4F83C]" />
-                        ) : (
-                          <Pause className="h-7 w-7 fill-current text-white" />
-                        )}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Minimal Subtle Glass Controls at Bottom Right */}
-                  <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2 opacity-60 group-hover:opacity-100 transition-all duration-300">
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        togglePlay();
-                      }}
-                      className="h-8 w-8 rounded-full bg-[#061B12]/80 backdrop-blur-md border border-emerald-500/30 text-emerald-200 hover:text-[#B4F83C] hover:border-[#B4F83C]/50 flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-95"
-                      title={isPlaying ? 'Pause video' : 'Play video'}
-                    >
-                      {isPlaying ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5 translate-x-0.5 fill-current" />}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={toggleMute}
-                      className="h-8 w-8 rounded-full bg-[#061B12]/80 backdrop-blur-md border border-emerald-500/30 text-emerald-200 hover:text-[#B4F83C] hover:border-[#B4F83C]/50 flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-95"
-                      title={isMuted ? 'Unmute' : 'Mute'}
-                    >
-                      {isMuted ? <VolumeX className="h-3.5 w-3.5" /> : <Volume2 className="h-3.5 w-3.5" />}
-                    </button>
-                  </div>
-                </div>
+                {/* Real-Time Background Removal & Seamless Forest-Green UI Blending */}
+                <TransparentHeroVideo
+                  src="/videos/hero-basket-video.mp4"
+                  poster="/images/hero-basket.png"
+                  className="z-10"
+                />
               </div>
             </div>
 
