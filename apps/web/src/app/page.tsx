@@ -627,6 +627,36 @@ export default function HomePage() {
       rating: 4.9,
       ratingCount: 275,
     },
+    {
+      id: 'g-29',
+      name: 'MediGuard Complete Emergency First Aid Box Kit',
+      brand: 'MediGuard',
+      unit: '1 Box (50 Items)',
+      price: 499.0,
+      compareAtPrice: 650.0,
+      imageUrl: '/images/products/first-aid-kit.jpg',
+      category: { name: 'Personal Care' },
+      isPrescriptionRequired: false,
+      isMedicine: true,
+      inStock: true,
+      rating: 4.9,
+      ratingCount: 180,
+    },
+    {
+      id: 'g-30',
+      name: 'Freeze-Flow Fast Action Pain Relief Aerosol Spray',
+      brand: 'Freeze-Flow',
+      unit: '200 ml Bottle',
+      price: 199.0,
+      compareAtPrice: 249.0,
+      imageUrl: '/images/products/pain-relief-spray.jpg',
+      category: { name: 'Personal Care' },
+      isPrescriptionRequired: false,
+      isMedicine: true,
+      inStock: true,
+      rating: 4.8,
+      ratingCount: 142,
+    },
   ];
 
   // Dedicated Non-Duplicated Product Sets For Every Section:
@@ -647,7 +677,7 @@ export default function HomePage() {
 
   // 4. Pharmacy & Healthcare: Certified medical & wellness essentials
   const pharmacySectionProducts = defaultGroceryProducts.filter((p) =>
-    ['g-25', 'g-26', 'g-27', 'g-28'].includes(p.id)
+    ['g-25', 'g-26', 'g-27', 'g-28', 'g-29', 'g-30'].includes(p.id)
   );
 
   // Filter products for the Deal of the Day interactive tabs
