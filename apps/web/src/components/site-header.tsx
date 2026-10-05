@@ -131,10 +131,10 @@ export function SiteHeader() {
                 <Clock className="h-3 w-3 text-[#B4F83C]" />
                 <span>7:00 AM - 11:00 PM</span>
               </span>
-              <span className="flex items-center gap-1 text-white font-medium">
+              <a href="tel:+917380666971" className="flex items-center gap-1 text-white font-medium hover:text-[#B4F83C] transition-colors">
                 <Phone className="h-3 w-3 text-[#B4F83C]" />
-                <span>Dohrighat: +91 73800-287-672</span>
-              </span>
+                <span>Dohrighat: +91 73806 66971</span>
+              </a>
             </div>
           </div>
         </div>

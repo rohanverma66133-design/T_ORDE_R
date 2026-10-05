@@ -251,15 +251,15 @@ export default function HelpPage() {
 
               {/* Direct Phone & Email Cards */}
               <div className="p-5 rounded-3xl bg-white border border-slate-200/90 text-slate-900 shadow-sm space-y-3">
-                <div className="flex items-center gap-3.5">
-                  <div className="h-10 w-10 rounded-2xl bg-emerald-50 text-emerald-700 border border-emerald-100 flex items-center justify-center shrink-0">
+                <a href="tel:+917380666971" className="flex items-center gap-3.5 group">
+                  <div className="h-10 w-10 rounded-2xl bg-emerald-50 text-emerald-700 border border-emerald-100 flex items-center justify-center shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
                     <PhoneCall className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-black text-slate-900">Dohrighat Town Helpline</h4>
-                    <p className="text-xs text-emerald-700 font-black">+91 73800-287-672</p>
+                    <h4 className="text-xs font-black text-slate-900 group-hover:text-emerald-700 transition-colors">Dohrighat Town Helpline</h4>
+                    <p className="text-xs text-emerald-700 font-black">+91 73806 66971</p>
                   </div>
-                </div>
+                </a>
 
                 <div className="pt-2 border-t border-slate-100 flex items-center gap-3.5">
                   <div className="h-10 w-10 rounded-2xl bg-teal-50 text-teal-700 border border-teal-100 flex items-center justify-center shrink-0">

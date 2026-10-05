@@ -84,10 +84,10 @@ export function SiteFooter() {
                 <MapPin className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
                 <span>Main Market Road, Dohrighat Town Hub, Mau, Uttar Pradesh - 275303</span>
               </p>
-              <p className="flex items-center gap-2">
+              <a href="tel:+917380666971" className="flex items-center gap-2 hover:text-white transition-colors">
                 <Phone className="h-4 w-4 text-emerald-400 shrink-0" />
-                <span className="font-bold text-white">Dohrighat Helpline: +91 73800-287-672</span>
-              </p>
+                <span className="font-bold text-white">Dohrighat Helpline: +91 73806 66971</span>
+              </a>
               <p className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-emerald-400 shrink-0" />
                 <span>care.dohrighat@tord.in</span>
